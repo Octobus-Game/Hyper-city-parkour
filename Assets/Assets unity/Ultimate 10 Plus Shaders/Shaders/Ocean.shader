@@ -1,35 +1,4 @@
-﻿/*
-        ░█████╗░░█████╗░███████╗░█████╗░███╗░░██╗  ░██████╗██╗░░██╗░█████╗░██████╗░███████╗██████╗░
-        ██╔══██╗██╔══██╗██╔════╝██╔══██╗████╗░██║  ██╔════╝██║░░██║██╔══██╗██╔══██╗██╔════╝██╔══██╗
-        ██║░░██║██║░░╚═╝█████╗░░███████║██╔██╗██║  ╚█████╗░███████║███████║██║░░██║█████╗░░██████╔╝
-        ██║░░██║██║░░██╗██╔══╝░░██╔══██║██║╚████║  ░╚═══██╗██╔══██║██╔══██║██║░░██║██╔══╝░░██╔══██╗
-        ╚█████╔╝╚█████╔╝███████╗██║░░██║██║░╚███║  ██████╔╝██║░░██║██║░░██║██████╔╝███████╗██║░░██║
-        ░╚════╝░░╚════╝░╚══════╝╚═╝░░╚═╝╚═╝░░╚══╝  ╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░╚══════╝╚═╝░░╚═╝
-
-                █▀▀▄ █──█ 　 ▀▀█▀▀ █──█ █▀▀ 　 ░█▀▀▄ █▀▀ ▀█─█▀ █▀▀ █── █▀▀█ █▀▀█ █▀▀ █▀▀█ 
-                █▀▀▄ █▄▄█ 　 ─░█── █▀▀█ █▀▀ 　 ░█─░█ █▀▀ ─█▄█─ █▀▀ █── █──█ █──█ █▀▀ █▄▄▀ 
-                ▀▀▀─ ▄▄▄█ 　 ─░█── ▀──▀ ▀▀▀ 　 ░█▄▄▀ ▀▀▀ ──▀── ▀▀▀ ▀▀▀ ▀▀▀▀ █▀▀▀ ▀▀▀ ▀─▀▀
-____________________________________________________________________________________________________________________________________________
-
-        ▄▀█ █▀ █▀ █▀▀ ▀█▀ ▀   █░█ █░░ ▀█▀ █ █▀▄▀█ ▄▀█ ▀█▀ █▀▀   ▄█ █▀█ ▄█▄   █▀ █░█ ▄▀█ █▀▄ █▀▀ █▀█ █▀
-        █▀█ ▄█ ▄█ ██▄ ░█░ ▄   █▄█ █▄▄ ░█░ █ █░▀░█ █▀█ ░█░ ██▄   ░█ █▄█ ░▀░   ▄█ █▀█ █▀█ █▄▀ ██▄ █▀▄ ▄█
-____________________________________________________________________________________________________________________________________________
-License:
-    The license is ATTRIBUTION 3.0
-
-    More license info here:
-        https://creativecommons.org/licenses/by/3.0/
-____________________________________________________________________________________________________________________________________________
-This shader has NOT been tested on any other PC configuration except the following:
-    CPU: Intel Core i5-6400
-    GPU: NVidia GTX 750Ti
-    RAM: 16GB
-    Windows: 10 x64
-    DirectX: 11
-____________________________________________________________________________________________________________________________________________
-*/
-
-Shader "Ultimate 10+ Shaders/Ocean"
+﻿Shader "Ultimate 10+ Shaders/Ocean"
 {
     Properties
     {
@@ -45,6 +14,12 @@ Shader "Ultimate 10+ Shaders/Ocean"
 
         _Glossiness ("Smoothness", Range(0,1)) = 0.6
         _Metallic ("Metallic", Range(0,1)) = 0.2
+
+        [Header(Procedural Noise)]
+        _NoiseScale ("Noise Scale", Range(0.1, 50)) = 8
+        _NoiseSpeed ("Noise Speed", Range(0, 5)) = 0.5
+        _NoiseStrength ("Noise Strength", Range(0, 2)) = 0.3
+        _NoiseUVDistortion ("Noise UV Distortion", Range(0, 0.5)) = 0.05
         
         [Enum(UnityEngine.Rendering.CullMode)] _Cull ("Cull", Float) = 2
     }
@@ -86,20 +61,86 @@ Shader "Ultimate 10+ Shaders/Ocean"
         half _Glossiness;
         half _Metallic;
 
+        half _NoiseScale;
+        half _NoiseSpeed;
+        half _NoiseStrength;
+        half _NoiseUVDistortion;
+
         struct Input
         {
             float2 uv_Normal1;
             float2 uv_Normal2;
         };
 
+        // ------------------------------------------------------------------
+        // Procedural 2D value noise (no texture lookups needed)
+        // ------------------------------------------------------------------
+
+        // Pseudo-random hash based on a 2D input, returns value in [0,1]
+        float noiseHash(float2 p)
+        {
+            return frac(sin(dot(p, float2(127.1, 311.7))) * 43758.5453123);
+        }
+
+        // Value noise with smooth (Hermite) interpolation between grid corners
+        float valueNoise(float2 p)
+        {
+            float2 i = floor(p);
+            float2 f = frac(p);
+
+            // Smoothstep-style interpolation curve (avoids grid artifacts)
+            float2 u = f * f * (3.0 - 2.0 * f);
+
+            float a = noiseHash(i + float2(0.0, 0.0));
+            float b = noiseHash(i + float2(1.0, 0.0));
+            float c = noiseHash(i + float2(0.0, 1.0));
+            float d = noiseHash(i + float2(1.0, 1.0));
+
+            return lerp(lerp(a, b, u.x), lerp(c, d, u.x), u.y);
+        }
+
+        // Fractal Brownian Motion - layers several octaves of valueNoise together
+        // for a more natural, less repetitive result (classic for water/clouds)
+        float fbmNoise(float2 p)
+        {
+            float value = 0.0;
+            float amplitude = 0.5;
+
+            [unroll]
+            for (int i = 0; i < 4; i++)
+            {
+                value += amplitude * valueNoise(p);
+                p *= 2.0;
+                amplitude *= 0.5;
+            }
+
+            return value;
+        }
+
         fixed4 pixel;
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
-            IN.uv_Normal1 += _Time.y * _FlowDirection1;
-            IN.uv_Normal2 += _Time.y * _FlowDirection2;
+            // Animated noise coordinate, independent of the normal map UVs
+            float2 noiseUV = IN.uv_Normal1 * _NoiseScale + _Time.y * _NoiseSpeed;
+
+            // Sample noise twice (offset) to build a fake "gradient" that we
+            // can use to distort UVs, mimicking uneven water displacement
+            float n = fbmNoise(noiseUV);
+            float nx = fbmNoise(noiseUV + float2(0.37, 0.0));
+            float ny = fbmNoise(noiseUV + float2(0.0, 0.37));
+            float2 noiseGradient = float2(nx, ny) - n;
+
+            IN.uv_Normal1 += _Time.y * _FlowDirection1 + noiseGradient * _NoiseUVDistortion;
+            IN.uv_Normal2 += _Time.y * _FlowDirection2 + noiseGradient * _NoiseUVDistortion;
 
             pixel = (tex2D (_Normal1, IN.uv_Normal1) * _NormalStrength1 + tex2D(_Normal2, IN.uv_Normal2) * _NormalStrength2);
-            
+
+            // Build an extra procedural normal from the noise and blend it in,
+            // giving small-scale ripples on top of the two normal maps
+            fixed3 noiseNormal = fixed3(nx - n, ny - n, 1.0) * _NoiseStrength;
+            pixel.rgb += noiseNormal;
+            pixel.a = 1.0;
+
             o.Albedo = _Color.rgb;
             o.Alpha = _Color.a;
             
