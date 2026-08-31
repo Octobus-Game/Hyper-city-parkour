@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ocean (2) 18
+  m_Shader: {fileID: 4800000, guid: 7de634a57d2e6244891410ed36ed4749, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 1
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _CausticsTexture:
+        m_Texture: {fileID: 2800000, guid: 52eef6aa133a854489e620987374b364, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FoamTexture:
+        m_Texture: {fileID: 2800000, guid: 08b3912bdc0a5ed4d9a27125425a97f4, type: 3}
+        m_Scale: {x: -0.48, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal1:
+        m_Texture: {fileID: 2800000, guid: fccc6818be225674382d96933708d421, type: 3}
+        m_Scale: {x: 5.69, y: 6}
+        m_Offset: {x: 0, y: 0}
+    - _Normal2:
+        m_Texture: {fileID: 2800000, guid: 1d557bc533f5684438d25d03042b1025, type: 3}
+        m_Scale: {x: -0.13, y: 0.13}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _CausticsSpeed: 1.03
+    - _CausticsStrength: 0.59
+    - _Cull: 2
+    - _DayNightBlend: 0
+    - _DepthFade: 24.8
+    - _DistanceFade: 200
+    - _EdgeFoamWidth: 1.51
+    - _FoamSoftness: 1
+    - _FoamThreshold: 0.955
+    - _FresnelPower: 10
+    - _Glossiness: 0.837
+    - _Metallic: 0.692
+    - _NormalStrength1: 0.12
+    - _NormalStrength2: 0.77
+    - _ReflectionStrength: 1
+    - _WaveHeight: 0.5
+    - _WaveSpeed: 1
+    m_Colors:
+    - _Color: {r: 0, g: 1, b: 0.027031183, a: 0}
+    - _DeepColor: {r: 0.025076184, g: 0.21509439, b: 0.020697758, a: 1}
+    - _FlowDirection1: {r: 0.05, g: 0.05, b: 0, a: 1}
+    - _FlowDirection2: {r: 0, g: 0.05, b: 0, a: 1}
+    - _FoamColor: {r: 0.12735046, g: 0.4415095, b: 0.0824706, a: 1}
+    - _NightColor: {r: 0.08617689, g: 0.5924529, b: 0.0033534584, a: 0.9}
+    - _WindDirection: {r: 1, g: 0, b: 1, a: 0}
+  m_BuildTextureStacks: []
