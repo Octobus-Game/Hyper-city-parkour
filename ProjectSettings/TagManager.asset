@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - Bullet
+  - Shoot
+  - Ground
+  - Boss
+  - Magnetic
+  - Player mirror
+  - targetPrefab
+  - isGrounded
+  - Ladder
+  - HIDE
+  - Saveable
+  - ResetTrigger
+  - damage
+  - heal
+  - Gravity
+  - Wall
+  - Start time
+  - End time
+  - Start position Mirror
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Ground
+  - Water
+  - UI
+  - gun
+  - Ladder
+  - Object_camera_collision
+  - Ulltrakill_walk
+  - Multiplayer-object
+  - House
+  - Tree
+  - Partilce
+  - Granitsa
+  - Wall
+  - Tryp
+  - Light ignore
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
