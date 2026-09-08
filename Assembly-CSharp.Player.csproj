@@ -173,8 +173,8 @@
     <Compile Include="Assets\scripts Main\Rank player.cs" />
     <Compile Include="Assets\scene levels\MENU PARTS\EDITMAP\Code\FBX EXPORT 01.cs" />
     <Compile Include="Assets\scripts Main\DA\Genetated terrain.cs" />
-    <Compile Include="Assets\scripts Main\object particle bullet.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\Restart trigger mirror.cs" />
+    <Compile Include="Assets\scripts Main\object particle bullet.cs" />
     <Compile Include="Assets\ououo\PlayerAiming.cs" />
     <Compile Include="Assets\scripts Main\Deforvade object.cs" />
     <Compile Include="Assets\ououo\Ladder.cs" />
@@ -262,6 +262,7 @@
     <Compile Include="Assets\scene levels\Multi scene\Surf map\Scripts\GameLogic.cs" />
     <Compile Include="Assets\scripts Main\Setting save and load.cs" />
     <Compile Include="Assets\scripts Main\battut.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\Cinema Multi\Script\BackendVideoUrlResolver.cs" />
     <Compile Include="Assets\scripts Main\PLAYER GAME.cs" />
     <Compile Include="Assets\scripts Main\LAVA BUTTON.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\Smena hand sandbox.cs" />
@@ -324,6 +325,7 @@
     <Compile Include="Assets\scripts Main\LABOO.cs" />
     <Compile Include="Assets\Jungle\TIME SWITCHER.cs" />
     <Compile Include="Assets\scripts Main\PANEL.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\Cinema Multi\Script\IVideoUrlResolver.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\DragManager.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\object peremeshenie.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Core Multiplayer\Base player script\CubeColorSync.cs" />
@@ -551,6 +553,7 @@
     <Compile Include="Assets\scripts Main\Orb jump.cs" />
     <Compile Include="Assets\scripts Main\меню.cs" />
     <Compile Include="Assets\scripts Main\TRIGGGGER.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\Cinema Multi\Script\VideoUrlInputUI.cs" />
     <Compile Include="Assets\scripts Main\РЫВОК.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Surf map\mirror script\Player Logic mirror.cs" />
     <Compile Include="Assets\scene levels\cutscene\code cut\03030.cs" />
@@ -579,6 +582,7 @@
     <Compile Include="Assets\Assets unity\AmplifyOcclusion\Samples\Demo\Scripts\MouseLook.cs" />
     <Compile Include="Assets\scripts Main\клейк.cs" />
     <Compile Include="Assets\scripts Main\script\testLook.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\Cinema Multi\Script\NetworkVideoPlayer.cs" />
     <Compile Include="Assets\scripts Main\2D llevel.cs" />
     <Compile Include="Assets\scripts Main\DA\particle.cs" />
     <Compile Include="Assets\scripts Main\Healt bar.cs" />
@@ -662,6 +666,7 @@
     <None Include="Assets\Custom Shader\Shader\Temperature.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\Custom Shader\Shader\EE.shader" />
+    <None Include="Assets\AddressableAssetsData\link.xml" />
     <None Include="Assets\ScriptTemplates\57-Mirror__Network Transform-NewNetworkTransform.cs.txt" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\Assets unity\Ultimate 10 Plus Shaders\Shaders\Ocean.shader" />
@@ -1519,6 +1524,10 @@
       <Project>{9DB6CD4D-5E42-B886-469C-28B8710A5A8D}</Project>
       <Name>Assembly-CSharp-firstpass.Player</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Addressables.Player.csproj">
+      <Project>{3FEC4EDA-F3AE-F034-6819-629C01DB9F0D}</Project>
+      <Name>Unity.Addressables.Player</Name>
+    </ProjectReference>
     <ProjectReference Include="com.rlabrecque.steamworks.net.Player.csproj">
       <Project>{1D560D41-EEF3-629A-AE28-48ED0073E6EE}</Project>
       <Name>com.rlabrecque.steamworks.net.Player</Name>
@@ -1535,10 +1544,6 @@
       <Project>{B2AAB86B-0A5F-C00A-D5E6-844D7EE945EC}</Project>
       <Name>Unity.Postprocessing.Runtime.Player</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.AI.Navigation.Player.csproj">
-      <Project>{C1B7705E-1524-E311-7069-87F033F0B5EE}</Project>
-      <Name>Unity.AI.Navigation.Player</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.ResourceManager.Player.csproj">
       <Project>{D631B12D-85BA-EDFA-0C26-754E80AA3025}</Project>
       <Name>Unity.ResourceManager.Player</Name>
@@ -1546,6 +1551,14 @@
     <ProjectReference Include="Unity.ScriptableBuildPipeline.Player.csproj">
       <Project>{33EA79E0-47F8-A929-B36C-59D2E1217AE2}</Project>
       <Name>Unity.ScriptableBuildPipeline.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.AI.Navigation.Player.csproj">
+      <Project>{C1B7705E-1524-E311-7069-87F033F0B5EE}</Project>
+      <Name>Unity.AI.Navigation.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.Universal.Config.Runtime.Player.csproj">
+      <Project>{FE252C07-F4A2-0DA2-91C2-5181BF2AE245}</Project>
+      <Name>Unity.RenderPipelines.Universal.Config.Runtime.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Telepathy.Player.csproj">
       <Project>{C842A593-10EB-29A5-D762-5D67FFB5C5DC}</Project>
@@ -1595,6 +1608,10 @@
       <Project>{219F24B3-2819-8E18-3DF6-6067D24A9FAB}</Project>
       <Name>Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.Player</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.Universal.Runtime.Player.csproj">
+      <Project>{673E7CFE-CD65-DFC3-81F0-C9B056AC4D59}</Project>
+      <Name>Unity.RenderPipelines.Universal.Runtime.Player</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Burst.Player.csproj">
       <Project>{2C62676C-C1D2-0218-91E8-105247858238}</Project>
       <Name>Unity.Burst.Player</Name>
@@ -1639,6 +1656,10 @@
       <Project>{3F2BE246-FC11-9440-170D-E7DB177D8840}</Project>
       <Name>Unity.2D.Common.Runtime.Player</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipeline.Universal.ShaderLibrary.Player.csproj">
+      <Project>{085B9C19-0D37-8CD1-674F-A17E9CC09FD8}</Project>
+      <Name>Unity.RenderPipeline.Universal.ShaderLibrary.Player</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Timeline.Player.csproj">
       <Project>{CD5CF064-1BA1-0971-CCDC-C9A0AEC819E9}</Project>
       <Name>Unity.Timeline.Player</Name>
@@ -1671,13 +1692,13 @@
       <Project>{8D43EDC6-C4A9-FEDB-E47F-EBBF302E9EC8}</Project>
       <Name>Unity.Splines.Player</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.Universal.Shaders.Player.csproj">
+      <Project>{A4BE3E98-D38D-1F89-1F70-4609DD8C610F}</Project>
+      <Name>Unity.RenderPipelines.Universal.Shaders.Player</Name>
+    </ProjectReference>
     <ProjectReference Include="Cinemachine.Player.csproj">
       <Project>{39374DF6-DDF9-2A18-7E83-7614A13DFFF3}</Project>
       <Name>Cinemachine.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Addressables.Player.csproj">
-      <Project>{3FEC4EDA-F3AE-F034-6819-629C01DB9F0D}</Project>
-      <Name>Unity.Addressables.Player</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

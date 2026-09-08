@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 639194136980974645
-    m_Hash: 2562663271
+      ticks: 639242864690440589
+    m_Hash: 1910541373
   m_LockFileStatus:
     m_FilePath: C:/UnityProject/Hyper-city_parkour/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 639194136981022307
-    m_Hash: 1867057145
+      ticks: 639242864690516705
+    m_Hash: 1996519593
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -205,6 +205,8 @@ m_ResolvedPackages:
     - 15.1.0
     - 16.0.0
     - 16.0.1
+    - 17.0.0
+    - 17.0.1
     compatible:
     - 9.1.0
     - 9.1.1
@@ -495,6 +497,7 @@ m_ResolvedPackages:
     - 14.0.3
     - 15.0.0
     - 15.0.1
+    - 16.0.0
     compatible:
     - 8.0.4
     - 8.0.5
@@ -754,6 +757,7 @@ m_ResolvedPackages:
     - 15.0.2
     - 15.0.3
     - 16.0.0
+    - 17.0.0
     compatible:
     - 9.0.2
     - 9.0.3
@@ -2094,6 +2098,7 @@ m_ResolvedPackages:
     - 3.0.38
     - 3.0.39
     - 3.0.40
+    - 3.1.0
     compatible:
     - 3.0.27
     - 3.0.28
@@ -2547,6 +2552,7 @@ m_ResolvedPackages:
     - 1.5.10
     - 1.5.11
     - 1.5.12
+    - 1.5.13
     compatible:
     - 1.4.4
     - 1.4.5
@@ -2567,6 +2573,7 @@ m_ResolvedPackages:
     - 1.5.10
     - 1.5.11
     - 1.5.12
+    - 1.5.13
     recommended: 1.4.5
     deprecated: []
   dependencies:
@@ -3281,6 +3288,148 @@ m_ResolvedPackages:
   - name: com.unity.modules.jsonserialize
     version: 1.0.0
   keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 0
+  repository:
+    type: 
+    url: 
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 14.0.10
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+- packageId: com.unity.render-pipelines.universal@14.0.10
+  testable: 0
+  isDirectDependency: 1
+  version: 14.0.10
+  source: 2
+  resolvedPath: C:\UnityProject\Hyper-city_parkour\Library\PackageCache\com.unity.render-pipelines.universal@14.0.10
+  assetPath: Packages/com.unity.render-pipelines.universal
+  name: com.unity.render-pipelines.universal
+  displayName: Universal RP
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: The Universal Render Pipeline (URP) is a prebuilt Scriptable Render
+    Pipeline, made by Unity. URP provides artist-friendly workflows that let you
+    quickly and easily create optimized graphics across a range of platforms, from
+    mobile to high-end consoles and PCs.
+  status: 0
+  errors: []
+  versions:
+    all:
+    - 7.0.0
+    - 7.0.1
+    - 7.1.1
+    - 7.1.2
+    - 7.1.5
+    - 7.1.6
+    - 7.1.7
+    - 7.1.8
+    - 7.2.0
+    - 7.2.1
+    - 7.3.1
+    - 7.4.1
+    - 7.4.2
+    - 7.4.3
+    - 7.5.1
+    - 7.5.2
+    - 7.5.3
+    - 7.6.0
+    - 7.7.0
+    - 7.7.1
+    - 8.0.1
+    - 8.1.0
+    - 8.2.0
+    - 8.3.1
+    - 9.0.0-preview.14
+    - 9.0.0-preview.35
+    - 9.0.0-preview.55
+    - 9.0.0-preview.72
+    - 10.0.0-preview.26
+    - 10.1.0
+    - 10.2.0
+    - 10.2.1
+    - 10.2.2
+    - 10.3.1
+    - 10.3.2
+    - 10.4.0
+    - 10.5.0
+    - 10.5.1
+    - 10.6.0
+    - 10.7.0
+    - 10.8.0
+    - 10.8.1
+    - 10.9.0
+    - 10.10.0
+    - 10.10.1
+    - 14.0.10
+    compatible:
+    - 14.0.10
+    recommended: 14.0.10
+    deprecated: []
+  dependencies:
+  - name: com.unity.mathematics
+    version: 1.2.1
+  - name: com.unity.burst
+    version: 1.8.9
+  - name: com.unity.render-pipelines.core
+    version: 14.0.10
+  - name: com.unity.shadergraph
+    version: 14.0.10
+  - name: com.unity.render-pipelines.universal-config
+    version: 14.0.9
+  resolvedDependencies:
+  - name: com.unity.mathematics
+    version: 1.2.6
+  - name: com.unity.burst
+    version: 1.8.28
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.render-pipelines.core
+    version: 14.0.10
+  - name: com.unity.ugui
+    version: 1.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.modules.terrain
+    version: 1.0.0
+  - name: com.unity.shadergraph
+    version: 14.0.10
+  - name: com.unity.searcher
+    version: 4.9.2
+  - name: com.unity.render-pipelines.universal-config
+    version: 14.0.9
+  keywords:
+  - graphics
+  - performance
+  - rendering
+  - mobile
+  - render
+  - pipeline
   registry:
     id: main
     name: 
@@ -6616,6 +6765,76 @@ m_ResolvedPackages:
     deprecationMessage: 
   isDeprecated: 0
   deprecationMessage: 
+- packageId: com.unity.render-pipelines.universal-config@14.0.9
+  testable: 0
+  isDirectDependency: 0
+  version: 14.0.9
+  source: 2
+  resolvedPath: C:\UnityProject\Hyper-city_parkour\Library\PackageCache\com.unity.render-pipelines.universal-config@14.0.9
+  assetPath: Packages/com.unity.render-pipelines.universal-config
+  name: com.unity.render-pipelines.universal-config
+  displayName: Universal RP Config
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: Configuration files for the Universal Render Pipeline.
+  status: 0
+  errors: []
+  versions:
+    all:
+    - 14.0.9
+    compatible:
+    - 14.0.9
+    recommended: 14.0.9
+    deprecated: []
+  dependencies:
+  - name: com.unity.render-pipelines.core
+    version: 14.0.9
+  resolvedDependencies:
+  - name: com.unity.render-pipelines.core
+    version: 14.0.10
+  - name: com.unity.ugui
+    version: 1.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.modules.terrain
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 0
+  repository:
+    type: 
+    url: 
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
 - packageId: com.unity.addressables@1.21.19
   testable: 0
   isDirectDependency: 0
@@ -6799,6 +7018,7 @@ m_ResolvedPackages:
     - 2.10.0
     - 2.10.1
     - 2.10.2
+    - 2.10.3
     - 2.11.1
     - 2.11.2
     - 3.0.0
@@ -6976,6 +7196,7 @@ m_ResolvedPackages:
     - 8.88.0-exp.2
     - 9.0.0
     - 9.0.1
+    - 10.0.0
     compatible:
     - 3.1.2
     - 3.1.3
@@ -7094,6 +7315,7 @@ m_ResolvedPackages:
     - 5.0.2
     - 5.0.3
     - 6.0.0
+    - 7.0.0
     compatible:
     - 1.1.1
     - 1.1.2
@@ -7269,6 +7491,7 @@ m_ResolvedPackages:
     - 14.0.0
     - 14.0.1
     - 15.0.0
+    - 16.0.0
     compatible:
     - 8.0.2
     - 8.0.3

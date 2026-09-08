@@ -105,8 +105,8 @@
     <Compile Include="Library\PackageCache\com.unity.2d.animation@9.1.0\Editor\SpriteLib\SpriteLibraryEditor\UI\EditorWindowElements.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@9.1.0\Editor\SkinningModule\Triangulation\Triangulator.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@9.1.0\Editor\SkinningModule\Selectors\RectBoneSelector.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.animation@9.1.0\Editor\SkinningModule\SkeletonTool\SkeletonToolWrapper.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@9.1.0\Editor\SkinningModule\IMGUI\ISpriteMeshView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.animation@9.1.0\Editor\SkinningModule\SkeletonTool\SkeletonToolWrapper.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@9.1.0\Editor\AssemblyInfo.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@9.1.0\Editor\SkinningModule\SkinningCache\SkinningCachePersistentState.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@9.1.0\Editor\SkinningModule\Selectors\GenericVertexSelector.cs" />

@@ -1,3 +1,4 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 *ArtifactDB filter=lfs diff=lfs merge=lfs -text
+*[[:space:]]resources.assets filter=lfs diff=lfs merge=lfs -text

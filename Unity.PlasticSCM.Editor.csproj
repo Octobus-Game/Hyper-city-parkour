@@ -220,8 +220,8 @@
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\UI\EditorProgressControls.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\Views\Locks\LocksTab.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\Views\PendingChanges\Dialogs\EmptyCheckinMessageDialog.cs" />
-    <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\CollabMigration\MigrateCollabProject.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\MetaPath.cs" />
+    <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\CollabMigration\MigrateCollabProject.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\UI\GetPlasticShortcut.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\Views\CreateWorkspace\Dialogs\RepositoriesListView.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\AssetsUtils\LoadAsset.cs" />
