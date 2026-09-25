@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\VolumetricLightBeam\Shaders\shadergen_includes_hdrp.txt" />
+    <None Include="Assets\Plugins\VolumetricLightBeam\Samples\Materials\DepthSoftenFilter.shader" />
     <None Include="Assets\Plugins\VolumetricLightBeam\Shaders\VolumetricLightBeamShared.cginc" />
     <None Include="Assets\Plugins\VolumetricLightBeam\Shaders\shadergen_includes_urp.txt" />
     <None Include="Assets\Plugins\VolumetricLightBeam\Shaders\ShaderUtils.cginc" />
@@ -228,6 +229,10 @@
     </Reference>
     <Reference Include="UnityEngine.LocalizationModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.20f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\Variations\mono\Managed\UnityEngine.LocalizationModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.NVIDIAModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.20f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\Variations\mono\Managed\UnityEngine.NVIDIAModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule">
@@ -416,6 +421,10 @@
     </Reference>
     <Reference Include="System.Windows.Forms">
       <HintPath>Assets\StandaloneFileBrowser\Plugins\System.Windows.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Concentus">
+      <HintPath>Assets\Metater\MetaVoiceChat\Concentus.2.2.2\lib\netstandard2.0\Concentus.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">
@@ -923,6 +932,10 @@
     <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.Player.csproj">
       <Project>{EFEE91A3-7B87-94A2-9C87-CACBE1347BCF}</Project>
       <Name>Unity.RenderPipelines.Core.Runtime.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="FizzySteamworks.Player.csproj">
+      <Project>{D4CB6860-7347-E72D-119A-5E6C61F8D045}</Project>
+      <Name>FizzySteamworks.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Postprocessing.Runtime.Player.csproj">
       <Project>{B2AAB86B-0A5F-C00A-D5E6-844D7EE945EC}</Project>

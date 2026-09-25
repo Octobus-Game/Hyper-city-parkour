@@ -63,6 +63,7 @@
     <Compile Include="Assets\Assets unity\Poplar Tree FREE\Core\Scripts\GUI\Editor\ALP8310_ShaderGUI.cs" />
     <Compile Include="Assets\ScriptTemplates\Editor\MoveToAssetsFolder.cs" />
     <Compile Include="Assets\Assets unity\AmplifyOcclusion\Scripts\Editor\About.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Tests\Editor\NetEqInteropTests.cs" />
     <Compile Include="Assets\Assets unity\BushGrassBend\Editor\PrepareBushOrGrassMesh.cs" />
     <Compile Include="Assets\Assets unity\Poplar Tree FREE\Core\Scripts\GUI\Editor\ALP8310_ShaderDrawers.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Assets\Editor\RemoveMissingScripts.cs" />
     <Compile Include="Assets\Simple Car Controller\Editor\SCC_DrivetrainEditor.cs" />
     <Compile Include="Assets\Simple Car Controller\Editor\SCC_EditorWindows.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Tests\Editor\OnAudioFilterReadVcOutputTests.cs" />
     <Compile Include="Assets\Editor\Models_Export.cs" />
     <Compile Include="Assets\Assets unity\AmplifyOcclusion\Scripts\Editor\StartScreen.cs" />
     <Compile Include="Assets\Editor\FindMissingscript.cs" />
@@ -614,6 +616,10 @@
     </Reference>
     <Reference Include="System.Windows.Forms">
       <HintPath>Assets\StandaloneFileBrowser\Plugins\System.Windows.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Concentus">
+      <HintPath>Assets\Metater\MetaVoiceChat\Concentus.2.2.2\lib\netstandard2.0\Concentus.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="nunit.framework">
@@ -1181,6 +1187,10 @@
     <ProjectReference Include="com.unity.cinemachine.editor.csproj">
       <Project>{CD934019-AF95-B91B-A7B9-0B8DD43E50BF}</Project>
       <Name>com.unity.cinemachine.editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="FizzySteamworks.csproj">
+      <Project>{31F826E4-6C41-BA8B-5897-54B08C857447}</Project>
+      <Name>FizzySteamworks</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Postprocessing.Runtime.csproj">
       <Project>{2BC0ED02-4796-7B81-E0B5-FE40CA3F0EE7}</Project>

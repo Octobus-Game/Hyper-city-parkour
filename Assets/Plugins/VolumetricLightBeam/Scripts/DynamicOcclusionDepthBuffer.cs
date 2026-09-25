@@ -33,6 +33,64 @@ namespace VLB
         /// </summary>
         public float fadeDistanceToSurface = Consts.DynOcclusion.FadeDistanceToSurfaceDefault;
 
+        // ----------------------------------------------------------------------------------
+        //  SOFT EDGES  (новое)
+        // ----------------------------------------------------------------------------------
+
+        /// <summary>
+        /// Включить смягчение краёв окклюзии. Карта глубины дополнительно фильтруется,
+        /// поэтому границы тени/разреза луча становятся плавными вместо резких.
+        /// </summary>
+        public bool softEdges = true;
+
+        public enum SoftEdgeMode
+        {
+            /// <summary>
+            /// Безопасный режим: исходная depth-текстура остаётся как есть (формат и декодирование в шейдере VLB не меняются),
+            /// краю добавляется билинейная выборка и автоматически увеличенная fadeDistanceToSurface.
+            /// Работает с любым шейдером VLB без правок.
+            /// </summary>
+            Safe,
+
+            /// <summary>
+            /// Полноценное размытие карты глубины отдельным проходом. Даёт самый мягкий край,
+            /// но шейдер VLB должен корректно читать RFloat-текстуру (см. комментарий в OnModifyMaterialCallback).
+            /// </summary>
+            Filtered
+        }
+
+        /// <summary>Способ смягчения краёв. Начните с Safe; если края всё ещё резкие - попробуйте Filtered.</summary>
+        public SoftEdgeMode softEdgeMode = SoftEdgeMode.Safe;
+
+        /// <summary>
+        /// В режиме Safe: во сколько раз усиливается fadeDistanceToSurface относительно заданного значения.
+        /// </summary>
+        [Range(1f, 10f)]
+        public float safeModeFadeBoost = 3f;
+
+        /// <summary>
+        /// Радиус размытия краёв в текселях карты глубины. 0 = без размытия.
+        /// Чем больше значение, тем мягче край (но тем сильнее "растекается" тень).
+        /// </summary>
+        [Range(0f, 8f)]
+        public float edgeSoftness = 2.0f;
+
+        /// <summary>
+        /// Сколько раз повторить проход фильтра. Больше проходов = более гладкий край,
+        /// но дороже по производительности. Обычно хватает 1-2.
+        /// </summary>
+        [Range(1, 4)]
+        public int softenPasses = 2;
+
+        /// <summary>
+        /// Порог разницы глубин (0..1), после которого соседние отсчёты считаются разными объектами
+        /// и не смешиваются. Защищает от артефактов-"призраков" между близким и дальним слоем.
+        /// </summary>
+        [Range(0.001f, 0.5f)]
+        public float depthDiscontinuityThreshold = 0.05f;
+
+        const string kSoftenShaderName = "Hidden/VLB/DepthSoftenFilter";
+        static readonly int kSoftenParamsID = Shader.PropertyToID("_VLB_SoftenParams");
 
         protected override string GetShaderKeyword() { return "VLB_OCCLUSION_DEPTH_TEXTURE"; }
         protected override MaterialManager.DynamicOcclusion GetDynamicOcclusionMode() { return MaterialManager.DynamicOcclusion.DepthTexture; }
@@ -40,10 +98,128 @@ namespace VLB
         Camera m_DepthCamera = null;
         bool m_NeedToUpdateOcclusionNextFrame = false;
 
+        // Текстуры для смягчения (ping-pong A <-> B). Итог всегда в A.
+        RenderTexture m_SoftRT_A = null;
+        RenderTexture m_SoftRT_B = null;
+        Material m_SoftenMaterial = null;
+
+        bool IsFilteredMode { get { return softEdges && softEdgeMode == SoftEdgeMode.Filtered && edgeSoftness > 0.001f; } }
+        bool IsSoftenActive { get { return IsFilteredMode && m_SoftenMaterial != null; } }
+
+        /// <summary>
+        /// Текстура, которая реально отдаётся шейдеру луча:
+        /// смягчённая, если фильтр включён, иначе оригинальная карта глубины камеры.
+        /// </summary>
+        RenderTexture OutputDepthTexture
+        {
+            get
+            {
+                if (IsSoftenActive && m_SoftRT_A != null)
+                    return m_SoftRT_A;
+                return m_DepthCamera != null ? m_DepthCamera.targetTexture : null;
+            }
+        }
+
         void ProcessOcclusionInternal()
         {
             UpdateDepthCameraPropertiesAccordingToBeam();
             m_DepthCamera.Render();
+
+            if (IsFilteredMode)
+                ApplySoftenFilter();
+        }
+
+        /// <summary>
+        /// Читает глубину камеры и прогоняет её через фильтр смягчения.
+        /// Результат ВСЕГДА оказывается в m_SoftRT_A (ссылка не меняется, поэтому шейдер луча
+        /// продолжает читать актуальную текстуру без повторной установки свойства материала).
+        /// </summary>
+        void ApplySoftenFilter()
+        {
+            if (m_DepthCamera == null || m_DepthCamera.targetTexture == null) return;
+            if (!EnsureSoftenResources()) return;
+
+            m_SoftenMaterial.SetVector(kSoftenParamsID,
+                new Vector4(edgeSoftness, depthDiscontinuityThreshold, 0f, 0f));
+
+            // Проход 0: сырая глубина камеры -> A (шейдер сам читает depth-текстуру через _CameraDepthTexture-подобную выборку)
+            Graphics.Blit(m_DepthCamera.targetTexture, m_SoftRT_A, m_SoftenMaterial, 0);
+
+            // Дополнительные проходы: A -> B -> A. Чётное число Blit'ов гарантирует, что итог снова в A.
+            for (int i = 1; i < softenPasses; i++)
+            {
+                Graphics.Blit(m_SoftRT_A, m_SoftRT_B, m_SoftenMaterial, 0);
+                Graphics.Blit(m_SoftRT_B, m_SoftRT_A, m_SoftenMaterial, 0);
+            }
+        }
+
+        bool EnsureSoftenResources()
+        {
+            if (m_SoftenMaterial == null)
+            {
+                var shader = Shader.Find(kSoftenShaderName);
+                if (shader == null)
+                {
+                    Debug.LogWarning("[VLB] Shader '" + kSoftenShaderName + "' не найден. " +
+                                     "Добавьте DepthSoftenFilter.shader в проект (или в Always Included Shaders). Мягкие края отключены.");
+                    softEdges = false;
+                    return false;
+                }
+                m_SoftenMaterial = new Material(shader) { hideFlags = HideFlags.HideAndDontSave };
+            }
+
+            int res = depthMapResolution;
+            if (!IsRTValid(m_SoftRT_A, res))   m_SoftRT_A   = CreateSoftRT(m_SoftRT_A, res, "VLB Soft Depth A");
+            if (!IsRTValid(m_SoftRT_B, res))   m_SoftRT_B   = CreateSoftRT(m_SoftRT_B, res, "VLB Soft Depth B");
+
+            return m_SoftRT_A && m_SoftRT_B;
+        }
+
+        static bool IsRTValid(RenderTexture rt, int res)
+        {
+            return rt != null && rt.IsCreated() && rt.width == res && rt.height == res;
+        }
+
+        static RenderTexture CreateSoftRT(RenderTexture old, int res, string name)
+        {
+            if (old != null) { old.Release(); DestroyImmediate(old); }
+
+            // RFloat, если поддерживается, иначе RHalf / ARGB32 как запасной вариант
+            var format = RenderTextureFormat.RFloat;
+            if (!SystemInfo.SupportsRenderTextureFormat(format)) format = RenderTextureFormat.RHalf;
+            if (!SystemInfo.SupportsRenderTextureFormat(format)) format = RenderTextureFormat.ARGBHalf;
+
+            var rt = new RenderTexture(res, res, 0, format, RenderTextureReadWrite.Linear)
+            {
+                name = name,
+                filterMode = FilterMode.Bilinear,   // билинейная фильтрация = дополнительное сглаживание при выборке
+                wrapMode = TextureWrapMode.Clamp,
+                hideFlags = HideFlags.HideAndDontSave
+            };
+            rt.Create();
+            return rt;
+        }
+
+        void ReleaseSoftenResources()
+        {
+            ReleaseRT(ref m_SoftRT_A);
+            ReleaseRT(ref m_SoftRT_B);
+
+            if (m_SoftenMaterial)
+            {
+                DestroyImmediate(m_SoftenMaterial);
+                m_SoftenMaterial = null;
+            }
+        }
+
+        static void ReleaseRT(ref RenderTexture rt)
+        {
+            if (rt)
+            {
+                rt.Release();
+                DestroyImmediate(rt);
+                rt = null;
+            }
         }
 
         protected override bool OnProcessOcclusion(ProcessOcclusionSource source)
@@ -102,6 +278,10 @@ namespace VLB
             base.OnValidateProperties();
             depthMapResolution = Mathf.Clamp(Mathf.NextPowerOfTwo(depthMapResolution), 8, 2048);
             fadeDistanceToSurface = Mathf.Max(fadeDistanceToSurface, 0f);
+            edgeSoftness = Mathf.Max(edgeSoftness, 0f);
+            softenPasses = Mathf.Clamp(softenPasses, 1, 4);
+            safeModeFadeBoost = Mathf.Clamp(safeModeFadeBoost, 1f, 10f);
+            depthDiscontinuityThreshold = Mathf.Clamp(depthDiscontinuityThreshold, 0.001f, 0.5f);
         }
 
         void InstantiateOrActivateDepthCamera()
@@ -126,6 +306,9 @@ namespace VLB
                     m_DepthCamera.transform.SetParent(transform, false);
 
                     var rt = new RenderTexture(depthMapResolution, depthMapResolution, 16, RenderTextureFormat.Depth);
+                    // Билинейная фильтрация при выборке шейдером даёт дополнительное сглаживание даже без фильтра
+                    rt.filterMode = softEdges ? FilterMode.Bilinear : FilterMode.Point;
+                    rt.wrapMode = TextureWrapMode.Clamp;
                     m_DepthCamera.targetTexture = rt;
 
                     UpdateDepthCameraPropertiesAccordingToBeam();
@@ -163,6 +346,7 @@ namespace VLB
             base.OnDestroy();
 
             DestroyDepthCamera();
+            ReleaseSoftenResources();
 
 #if UNITY_EDITOR
             MarkMaterialAsDirty();
@@ -188,8 +372,19 @@ namespace VLB
         protected override void OnModifyMaterialCallback(MaterialModifier.Interface owner)
         {
             Debug.Assert(owner != null);
-            owner.SetMaterialProp(ShaderProperties.DynamicOcclusionDepthTexture, m_DepthCamera.targetTexture);
-            owner.SetMaterialProp(ShaderProperties.DynamicOcclusionDepthProps, fadeDistanceToSurface);
+
+            // ВАЖНО: в режиме Filtered шейдер получает RFloat-текстуру вместо Depth-текстуры.
+            // Если в вашей версии шейдера VLB глубина декодируется через DECODE_EYEDEPTH/LinearEyeDepth,
+            // для Filtered-режима может потребоваться поправить сэмплирование в шейдере
+            // (читать значение из .r как линейную глубину 0..1). В режиме Safe ничего менять не нужно.
+            var tex = OutputDepthTexture;
+            owner.SetMaterialProp(ShaderProperties.DynamicOcclusionDepthTexture, tex);
+
+            float fade = fadeDistanceToSurface;
+            if (softEdges && softEdgeMode == SoftEdgeMode.Safe)
+                fade = Mathf.Max(fade, 0.01f) * safeModeFadeBoost;   // растянутый переход = мягкий край без правок шейдера
+
+            owner.SetMaterialProp(ShaderProperties.DynamicOcclusionDepthProps, fade);
         }
 
 #if UNITY_EDITOR
@@ -216,6 +411,7 @@ namespace VLB
                 if (m_NeedToReinstantiateDepthCamera)
                 {
                     DestroyDepthCamera();
+                    ReleaseSoftenResources();
                     InstantiateOrActivateDepthCamera();
                     m_NeedToReinstantiateDepthCamera = false;
                 }

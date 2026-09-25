@@ -160,9 +160,19 @@ public class ChatBehavior : NetworkBehaviour
             && connectionToClient == NetworkServer.localConnection;
     }
 
-    // Выполняется на сервере: имя отправителя по connectionId
+    // Выполняется на сервере: берём ник из NetworkPlayerName того же игрока.
+    // Если по какой-то причине компонент/ник не найден — используем запасной вариант.
     private string GetSenderName()
     {
+        NetworkPlayerName playerName = connectionToClient.identity != null
+            ? connectionToClient.identity.GetComponent<NetworkPlayerName>()
+            : null;
+
+        if (playerName != null && !string.IsNullOrEmpty(playerName.nickname))
+        {
+            return playerName.nickname;
+        }
+
         return $"Player_{connectionToClient.connectionId}";
     }
 

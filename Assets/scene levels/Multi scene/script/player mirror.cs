@@ -61,6 +61,12 @@ namespace mirrorplayer
         public AudioClip wallJumpSound;
         public AudioSource audioSource;
 
+        [Header("Moving Platform")]
+        [Tooltip("Слои, на которых находятся движущиеся платформы. Игрок будет «прилипать» к ним, пока стоит сверху.")]
+        public LayerMask platformLayerMask = -1;
+        [Tooltip("Дистанция проверки лучом вниз от ног игрока, чтобы обнаружить платформу под ним")]
+        public float platformCheckDistance = 0.3f;
+
         [Header("Camera Settings")]
         public Camera playerCamera;
         public float lookSpeed = 2.0f;
@@ -78,6 +84,13 @@ namespace mirrorplayer
         public KeyCode uiToggleKey = KeyCode.Tab;
         public GameObject uiCanvas;
         public bool startWithUIEnabled = false;
+
+        [Header("Local Only Objects")]
+        [Tooltip("Объекты, которые должны быть активны ТОЛЬКО у локального игрока " +
+                 "(не синхронизируются по сети, никогда не видны на remote-копиях этого игрока " +
+                 "на других клиентах). Например: собственная модель головы/шлема, локальные маркеры, " +
+                 "локальный HUD-объект в мировом пространстве и т.п.")]
+        public GameObject[] localOnlyObjects;
 
         [Header("Speed Display UI")]
         public Text speedText;
@@ -127,6 +140,12 @@ namespace mirrorplayer
         // ─── Instant Landing ───────────────────────────────────────────
         private bool isInstantLanding = false;
 
+        // ─── Ground stick (анти-дрожание CharacterController.isGrounded) ─
+        // Служебное значение moveDirection.y, которое держит контроллер прижатым
+        // к земле на спусках/ступеньках. Это НЕ настоящая скорость падения, поэтому
+        // его нужно исключать из отображаемой пользователю скорости (см. GetDisplayVerticalSpeed).
+        private const float GroundStickVelocity = -2f;
+
         // ─── Camera Tilt ───────────────────────────────────────────────
         private float currentTiltZ = 0f;
         private float targetTiltZ = 0f;
@@ -142,13 +161,22 @@ namespace mirrorplayer
         private Vector3 lastWallNormal = Vector3.zero;
         private bool canWallJump = true;
 
+        // ─── Moving Platform ───────────────────────────────────────────
+        private Transform currentPlatform = null;
+        private Vector3 platformLastPosition = Vector3.zero;
+
         // ─── Network SyncVars ──────────────────────────────────────────
         [SyncVar] private float networkRotationX = 0;
         [SyncVar] private Quaternion networkBodyRotation = Quaternion.identity;
         [SyncVar] private float networkTiltZ = 0;
 
         // ─── State ─────────────────────────────────────────────────────
+        // canMove  — разрешает ходьбу/прыжок/гравитацию/wall-jump (HandleMovement и т.д.)
+        // canLook  — разрешает поворот камеры и тела игрока (HandleCameraRotation/Tilt)
+        // Флаги независимы: например, во время лазания по лестнице можно
+        // выключить canMove, оставив canLook = true, чтобы игрок мог осматриваться.
         [HideInInspector] public bool canMove = true;
+        [HideInInspector] public bool canLook = true;
         private bool isUIMode = false;
         private bool wasUIMode = false;
 
@@ -172,9 +200,15 @@ namespace mirrorplayer
             {
                 playerCamera.gameObject.SetActive(false);
                 if (uiCanvas != null) uiCanvas.SetActive(false);
+
+                // На remote-копиях этого игрока (у других клиентов) локальные объекты должны быть выключены.
+                SetLocalOnlyObjectsActive(false);
             }
             else
             {
+                // У локального игрока (у него самого) локальные объекты включены.
+                SetLocalOnlyObjectsActive(true);
+
                 // FIX 1: инициализируем rotationX из реального угла камеры в префабе,
                 //         чтобы не было прыжка если камера стоит не горизонтально.
                 float rawX = playerCamera.transform.localEulerAngles.x;
@@ -245,6 +279,19 @@ namespace mirrorplayer
                 HandleCameraRotation();
 
                 if (cameraTiltEnabled) HandleCameraTilt();
+            }
+            else
+            {
+                // FIX: раньше при открытии UI (Tab) весь блок движения, включая гравитацию
+                // и CharacterController.Move, полностью пропускался — игрок буквально
+                // "зависал" в воздухе, если Tab нажимался в прыжке/падении.
+                // Здесь мы НЕ читаем игровой ввод (WASD/мышь/прыжок и т.д.) и НЕ двигаем
+                // игрока по горизонтали, но продолжаем применять гравитацию и вызывать
+                // CharacterController.Move, чтобы падение / приземление работали как обычно.
+                if (!isFlyMode && !isNoclipMode)
+                {
+                    ApplyGravityOnly();
+                }
             }
 
             UpdateLocalCameraObjects();
@@ -375,7 +422,12 @@ namespace mirrorplayer
 
         void HandleCameraTilt()
         {
-            if (!canMove) return;
+            // ВАЖНО: гейтится через canLook, а не canMove. Если оставить canMove —
+            // то при cameraTiltEnabled == true именно этот метод вызывает
+            // ApplyCameraTilt(), которая применяет playerCamera.transform.localRotation.
+            // При заблокированном canMove (например, во время лазания по лестнице)
+            // поворот камеры из HandleCameraRotation() просто не отображался бы.
+            if (!canLook) return;
 
             float horizontalInput = Input.GetAxis("Horizontal");
 
@@ -599,11 +651,103 @@ namespace mirrorplayer
                 moveDirection.y  = jumpSpeed;
                 isInstantLanding = false;
             }
+            else if (characterController.isGrounded && moveDirection.y < 0f)
+            {
+                // FIX: без этого moveDirection.y "замораживался" на последнем отрицательном
+                // значении гравитации после приземления (не сбрасывался), пока не был выполнен
+                // прыжок. Небольшое отрицательное значение (а не 0) держит CharacterController
+                // прижатым к земле на склонах/ступеньках, как рекомендует документация Unity.
+                moveDirection.y = GroundStickVelocity;
+            }
 
             if (!characterController.isGrounded && !isWallSliding && !isInstantLanding)
                 moveDirection.y -= gravity * Time.deltaTime;
 
-            characterController.Move(moveDirection * Time.deltaTime);
+            characterController.Move(moveDirection * Time.deltaTime + GetPlatformDelta());
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // Moving Platform
+        // ═══════════════════════════════════════════════════════════════
+
+        /// <summary>
+        /// CharacterController.Move() двигает transform.position напрямую и никак
+        /// не зависит от того, что происходит с объектами под игроком — поэтому если
+        /// платформа под ногами едет, игрок сам по себе остаётся на месте (проваливается
+        /// сквозь неё или "соскальзывает"). Этот метод лучом вниз проверяет, стоит ли
+        /// игрок на платформе, запоминает её позицию в прошлом кадре и возвращает то,
+        /// на сколько она сдвинулась с тех пор — это смещение нужно ПРИБАВИТЬ к обычному
+        /// движению игрока в этом же вызове Move(), чтобы игрок "ехал" вместе с платформой.
+        /// </summary>
+        Vector3 GetPlatformDelta()
+        {
+            Transform detectedPlatform = null;
+
+            if (characterController.isGrounded)
+            {
+                Vector3 feet      = transform.position + characterController.center
+                                     + Vector3.down * (characterController.height * 0.5f);
+                Vector3 rayOrigin = feet + Vector3.up * 0.1f;
+
+                RaycastHit hit;
+                if (Physics.Raycast(rayOrigin, Vector3.down, out hit,
+                                     platformCheckDistance + 0.1f, platformLayerMask,
+                                     QueryTriggerInteraction.Ignore))
+                {
+                    detectedPlatform = hit.transform;
+                }
+            }
+
+            Vector3 delta = Vector3.zero;
+
+            if (detectedPlatform != null)
+            {
+                if (detectedPlatform == currentPlatform)
+                {
+                    // Стояли на этой же платформе и в прошлом кадре — считаем, насколько она уехала
+                    delta = detectedPlatform.position - platformLastPosition;
+                }
+                // Если платформа обнаружена только что (сменилась или игрок только приземлился) —
+                // в этом кадре delta не считаем (иначе будет "скачок"), просто запоминаем стартовую позицию
+
+                currentPlatform       = detectedPlatform;
+                platformLastPosition  = detectedPlatform.position;
+            }
+            else
+            {
+                currentPlatform = null;
+            }
+
+            return delta;
+        }
+
+        /// <summary>
+        /// Урезанная версия движения, используемая, когда открыт UI (isUIMode == true).
+        /// Игнорирует любой игровой ввод (ходьба/бег/прыжок/wall-jump/наклон камеры),
+        /// но продолжает:
+        ///   1) плавно гасить горизонтальную скорость (чтобы не "скользить" с открытым меню),
+        ///   2) применять гравитацию,
+        ///   3) вызывать CharacterController.Move,
+        /// иначе персонаж, открывший UI в воздухе, зависает на месте до закрытия UI.
+        /// </summary>
+        void ApplyGravityOnly()
+        {
+            if (!canMove) return;
+
+            // Гасим горизонтальную инерцию, пока открыто меню — без этого игрок продолжил
+            // бы лететь в направлении, которое было задано до открытия UI.
+            smoothedHorizontalVelocity = Vector3.Lerp(
+                smoothedHorizontalVelocity, Vector3.zero, Time.deltaTime * groundDeceleration);
+
+            moveDirection.x = smoothedHorizontalVelocity.x;
+            moveDirection.z = smoothedHorizontalVelocity.z;
+
+            if (!characterController.isGrounded)
+                moveDirection.y -= gravity * Time.deltaTime;
+            else if (moveDirection.y < 0f)
+                moveDirection.y = 0f;
+
+            characterController.Move(moveDirection * Time.deltaTime + GetPlatformDelta());
         }
 
         // ═══════════════════════════════════════════════════════════════
@@ -612,7 +756,7 @@ namespace mirrorplayer
 
         void HandleCameraRotation()
         {
-            if (!canMove) return;
+            if (!canLook) return;
 
             // FIX 3: пропускаем первые inputWarmupFrames кадров после старта
             //        (или после переключения курсора), чтобы не поймать сплайк
@@ -757,6 +901,24 @@ namespace mirrorplayer
             }
         }
 
+        // ═══════════════════════════════════════════════════════════════
+        // Local Only Objects
+        // ═══════════════════════════════════════════════════════════════
+
+        /// <summary>
+        /// Включает/выключает объекты из localOnlyObjects. Не синхронизируется по сети —
+        /// каждый клиент сам решает для СВОЕГО экземпляра playermirror, что показывать.
+        /// true  → вызывается для isLocalPlayer  (объекты видны у себя)
+        /// false → вызывается для remote-копий   (объекты скрыты у других)
+        /// </summary>
+        void SetLocalOnlyObjectsActive(bool active)
+        {
+            if (localOnlyObjects == null) return;
+
+            foreach (var obj in localOnlyObjects)
+                if (obj != null) obj.SetActive(active);
+        }
+
         [Command]
         public void CmdSetStaticObjectsVisibility(bool visible) => staticObjectsVisible = visible;
 
@@ -843,7 +1005,7 @@ namespace mirrorplayer
                 else
                 {
                     displaySpeed = showFullSpeed
-                        ? moveDirection.magnitude
+                        ? GetDisplayMoveDirection().magnitude
                         : new Vector3(moveDirection.x, 0f, moveDirection.z).magnitude;
                 }
 
@@ -851,7 +1013,7 @@ namespace mirrorplayer
 
                 if (showVerticalSpeed)
                 {
-                    float vertSpeed = (isFlyMode || isNoclipMode) ? flyVelocity.y : moveDirection.y;
+                    float vertSpeed = (isFlyMode || isNoclipMode) ? flyVelocity.y : GetDisplayVerticalSpeed();
                     text += "\n" + string.Format(verticalSpeedFormat, vertSpeed);
                 }
 
@@ -883,6 +1045,8 @@ namespace mirrorplayer
         // ═══════════════════════════════════════════════════════════════
 
         public void SetCanMove(bool value) => canMove = value;
+        public void SetCanLook(bool value) => canLook = value;
+        public void SetLocalOnlyObjectsVisible(bool visible) { if (isLocalPlayer) SetLocalOnlyObjectsActive(visible); }
         public bool IsUIMode()     => isUIMode;
         public bool IsFlyMode()    => isFlyMode;
         public bool IsNoclipMode() => isNoclipMode;
@@ -892,15 +1056,35 @@ namespace mirrorplayer
         public void EnableNoclipMode()  { if (isAdmin && !isNoclipMode) ToggleNoclipMode(); }
         public void DisableNoclipMode() { if (isAdmin &&  isNoclipMode) ToggleNoclipMode(); }
 
+        /// <summary>
+        /// Вертикальная скорость для отображения/расчётов "видимой" скорости.
+        /// Отличается от сырого moveDirection.y тем, что скрывает служебное
+        /// значение GroundStickVelocity — оно нужно только физике CharacterController
+        /// (чтобы не терять isGrounded на спусках) и не является реальным падением.
+        /// </summary>
+        private float GetDisplayVerticalSpeed()
+        {
+            return (characterController.isGrounded && moveDirection.y == GroundStickVelocity)
+                ? 0f
+                : moveDirection.y;
+        }
+
+        private Vector3 GetDisplayMoveDirection()
+        {
+            Vector3 v = moveDirection;
+            v.y = GetDisplayVerticalSpeed();
+            return v;
+        }
+
         public float GetCurrentSpeed()
         {
             if (isFlyMode || isNoclipMode) return flyVelocity.magnitude;
             return showFullSpeed
-                ? moveDirection.magnitude
+                ? GetDisplayMoveDirection().magnitude
                 : new Vector3(moveDirection.x, 0f, moveDirection.z).magnitude;
         }
 
-        public Vector3 GetVelocity() => (isFlyMode || isNoclipMode) ? flyVelocity : moveDirection;
+        public Vector3 GetVelocity() => (isFlyMode || isNoclipMode) ? flyVelocity : GetDisplayMoveDirection();
 
         public void ResetWallJumpState()
         {

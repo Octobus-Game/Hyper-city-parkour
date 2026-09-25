@@ -137,6 +137,7 @@
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
 -define:UNITY_EDITOR_ONLY_COMPILATION
+-r:"Assets/Metater/MetaVoiceChat/Concentus.2.2.2/lib/netstandard2.0/Concentus.dll"
 -r:"Assets/Mirror/Plugins/BouncyCastle/BouncyCastle.Cryptography.dll"
 -r:"Assets/Mirror/Plugins/BouncyCastle/Mirror.BouncyCastle.Cryptography.dll"
 -r:"Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll"

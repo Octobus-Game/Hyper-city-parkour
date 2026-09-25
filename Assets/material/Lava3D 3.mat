@@ -92,10 +92,10 @@ Material:
     - _GlossyReflections: 1
     - _IntersectEnable: 1
     - _IntersectMode: 0
-    - _IntersectSharpness: 0.47
+    - _IntersectSharpness: 0.344
     - _IntersectTexScale: 5
     - _IntersectTexSpeed: 0.5
-    - _IntersectThreshold: 0.21
+    - _IntersectThreshold: 0.56
     - _Metallic: 0
     - _Mode: 0
     - _NormalStrength: 1.55
@@ -113,5 +113,5 @@ Material:
     - _Color: {r: 8, g: 0.59880006, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlowDirection: {r: 1, g: 0, b: 1, a: 0}
-    - _IntersectColor: {r: 1.2311444, g: 0.186239, b: 0, a: 1}
+    - _IntersectColor: {r: 19.468575, g: 2.9450712, b: 0, a: 1}
   m_BuildTextureStacks: []

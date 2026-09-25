@@ -497,6 +497,10 @@
       <HintPath>Assets\StandaloneFileBrowser\Plugins\System.Windows.Forms.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Concentus">
+      <HintPath>Assets\Metater\MetaVoiceChat\Concentus.2.2.2\lib\netstandard2.0\Concentus.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
       <Private>False</Private>

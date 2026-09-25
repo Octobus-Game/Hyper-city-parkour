@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Octopus game
-  productName: Hyper city parkour
+  companyName: Octopus Game
+  productName: Hyper City Parkour
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.2981131, g: 0.27842638, b: 0.27842638, a: 1}
@@ -166,7 +166,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.Octopusgame.Hypercityparkour
-    Standalone: com.Octopus-game.Hyper-city-parkour
+    Standalone: com.Octopus-Game.Hyper-City-Parkour
   buildNumber:
     Standalone: 0
     VisionOS: 0

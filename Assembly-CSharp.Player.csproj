@@ -65,6 +65,7 @@
     <Compile Include="Assets\scene levels\Multi scene\script\Orbit prefab settings.cs" />
     <Compile Include="Assets\Simple Car Controller\Scripts\SCC_AntiRoll.cs" />
     <Compile Include="Assets\scripts Main\NPS.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Utils\FixedLengthArrayPool.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\networkmanager\SteamManager.cs" />
     <Compile Include="Assets\scripts Main\multiplayer KPR.cs" />
     <Compile Include="Assets\scene levels\MENU PARTS\EDITMAP\Code\Custom music.cs" />
@@ -82,10 +83,10 @@
     <Compile Include="Assets\scene levels\Multi scene\script\Car sidenie.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\code private.cs" />
     <Compile Include="Assets\scene levels\MENU PARTS\EDITMAP\Code\open load file.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\script\VcPushToTalk.cs" />
     <Compile Include="Assets\scripts Main\IK kinematica.cs" />
     <Compile Include="Assets\scripts Main\Stopwatch.cs" />
     <Compile Include="Assets\scripts Main\NPS code\Random clothes nps.cs" />
-    <Compile Include="Assets\Q3PlayerController.cs" />
     <Compile Include="Assets\Scripts STEAM\Steamworks.NET\Achiment steam.cs" />
     <Compile Include="Assets\scene levels\Secret levels\ULTRAKILL Gnevys\code\Hit buller.cs" />
     <Compile Include="Assets\scripts Main\old script\Клейк1.cs" />
@@ -95,9 +96,9 @@
     <Compile Include="Assets\scripts Main\CUTSCENE\1 LEVEL CUT.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\NetworkMovableObject.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Surf map\Scripts\LevelSelector.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\NetProviders\PurrNet\PurrNetFrame.cs" />
     <Compile Include="Assets\scripts Main\SPAWNER.cs" />
     <Compile Include="Assets\scripts Main\Snow FPS.cs" />
-    <Compile Include="Assets\scene levels\Multi scene\script\Voischat 01.cs" />
     <Compile Include="Assets\scripts Main\EDIT MAP TELE.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\STRELBA mirror.cs" />
     <Compile Include="Assets\scripts Main\cameraswitheer.cs" />
@@ -105,10 +106,12 @@
     <Compile Include="Assets\scene levels\Multi scene\Surf map\Scripts\MovementConfig.cs" />
     <Compile Include="Assets\scene levels\side_levels\PUzzles\slova\Puzzles sclovo.cs" />
     <Compile Include="Assets\scripts Main\Gravity_object.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Utils\MetaSerializableReactiveProperty.cs" />
     <Compile Include="Assets\scripts Main\AGNET.cs" />
     <Compile Include="Assets\scene levels\Secret levels\ULTRAKILL Gnevys\code\Kill.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\GrapingHook_mirror.cs" />
     <Compile Include="Assets\scene levels\side_levels\PUzzles\TELEPORT PUZZLES 1.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\NetProviders\LiteNetLib\LiteNetLibNetProvider.cs" />
     <Compile Include="Assets\scripts Main\Fov camera-01 2d.cs" />
     <Compile Include="Assets\scripts Main\ACHI.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Core Multiplayer\Base player script\SpawnableCube.cs" />
@@ -119,13 +122,16 @@
     <Compile Include="Assets\scene levels\Multi scene\script\ping manager server.cs" />
     <Compile Include="Assets\SNOW\code\ResetTrigger.cs" />
     <Compile Include="Assets\scene levels\other story\code\Jungle gololomka.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\NetProviders\NGO\NgoNetProvider.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Surf map\Scripts\GameUtils.cs" />
     <Compile Include="Assets\scripts Main\Typing Text.cs" />
     <Compile Include="Assets\scripts Main\2D TELEPORT.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Input\Mic\VcMic.cs" />
     <Compile Include="Assets\scripts Main\rotate object.cs" />
-    <Compile Include="Assets\scene levels\Multi scene\script\Bullet mirror.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\NetProviders\RiptideNetworking\RiptideNetworkingNetProvider.cs" />
     <Compile Include="Assets\ououo\Movement\MovementConfig.cs" />
     <Compile Include="Assets\scripts Main\Scroll ui.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\NetProviders\LiteNetLib\LiteNetLibFrame.cs" />
     <Compile Include="Assets\scripts Main\TRIGGER ISLAMD 3.cs" />
     <Compile Include="Assets\ououo\Movement\ISurfControllable.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Surf map\mirror script\Zone start.cs" />
@@ -133,6 +139,7 @@
     <Compile Include="Assets\scripts Main\level1.cs" />
     <Compile Include="Assets\ououo\Movement\InputButtons.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\Player chaat.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Input\VcAudioInput.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Surf map\Scripts\ISurfControllable.cs" />
     <Compile Include="Assets\ououo\Movement\SurfController.cs" />
     <Compile Include="Assets\scripts Main\Seamless teleportation\PortalPlayerController.cs" />
@@ -151,6 +158,7 @@
     <Compile Include="Assets\scene levels\other story\code\tRGGER SOUND QUIT.cs" />
     <Compile Include="Assets\scripts Main\FINAL.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\script\networkmanager\Steam_Lobby.cs" />
     <Compile Include="Assets\scripts Main\PlayerAnimator.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\connect to host.cs" />
@@ -162,10 +170,12 @@
     <Compile Include="Assets\scripts Main\Post prossesing Off.cs" />
     <Compile Include="Assets\scripts Main\old script\CharacterMovement1.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\PickupLine.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\Core Multiplayer\Base player script\visible object mirror\VisibleObject.cs" />
     <Compile Include="Assets\scripts Main\Speed Player plus.cs" />
     <Compile Include="Assets\scripts Main\Slider mouse.cs" />
     <Compile Include="Assets\Custom Shader\code\Shader replace.cs" />
     <Compile Include="Assets\scene levels\Secret levels\Delete files.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\rnnoise\RnnoiseVcInputFilter.cs" />
     <Compile Include="Assets\scripts Main\Melodii.cs" />
     <Compile Include="Assets\scripts Main\CLOSE TAB.cs" />
     <Compile Include="Assets\scripts Main\SaveInit.cs" />
@@ -184,9 +194,11 @@
     <Compile Include="Assets\scripts Main\Portal.cs" />
     <Compile Include="Assets\ououo\Extensions\VectorExtensions.cs" />
     <Compile Include="Assets\scripts Main\CKICKBUTTON.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\NetProviders\FishNet\FishNetFrame.cs" />
     <Compile Include="Assets\Assets unity\AmplifyOcclusion\Samples\Demo\Scripts\Controls.cs" />
     <Compile Include="Assets\scripts Main\SCALECOMMANDS.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\WEapon.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Utils\MicrophoneDevicesListener.cs" />
     <Compile Include="Assets\scripts Main\scene save\testing save\Scene select system.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\networkmanager\Steam view profiek.cs" />
     <Compile Include="Assets\scripts Main\FLYCAMERA.cs" />
@@ -203,6 +215,7 @@
     <Compile Include="Assets\scripts Main\Vertical sync.cs" />
     <Compile Include="Assets\scripts Main\Exit1.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\networkmanager\P2p system.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\MetaVc.cs" />
     <Compile Include="Assets\scripts Main\Discord script\Discord manager.cs" />
     <Compile Include="Assets\scripts Main\SAVEEEE.cs" />
     <Compile Include="Assets\Simple Car Controller\Scripts\SCC_Inputs.cs" />
@@ -212,19 +225,23 @@
     <Compile Include="Assets\scripts Main\speedrun code\Speed skip.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\ping manager.cs" />
     <Compile Include="Assets\scene levels\Secret levels\ULTRAKILL Gnevys\code\Green arm\Block arm check.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Output\VcAudioOutput.cs" />
     <Compile Include="Assets\ououo\TraceUtil\Trace.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\Core Multiplayer\Base player script\visible object mirror\VisibleAllObject.cs" />
     <Compile Include="Assets\scripts Main\DA\PLAYMODE.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Speedrun level\code speed\SpeedrunTimer.cs" />
     <Compile Include="Assets\scripts Main\Snow trigger.cs" />
     <Compile Include="Assets\scripts Main\REVAMPLOAD.cs" />
     <Compile Include="Assets\scripts Main\HHHHJJJJPJ.cs" />
     <Compile Include="Assets\SNOW\code\TemperatureSystem.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\script\test\NavMeshBuildManager.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleSaveFileText.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\ОСТРОВ 33.cs" />
     <Compile Include="Assets\Simple Car Controller\Scripts\SCC_Audio.cs" />
     <Compile Include="Assets\scene levels\side_levels\PUzzles\slova\Ulltrakill slovo.cs" />
     <Compile Include="Assets\scripts Main\dialoge.cs" />
     <Compile Include="Assets\ououo\Movement\SurfCharacter.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Utils\UnmanagedFloatArray.cs" />
     <Compile Include="Assets\scripts Main\Lestnisa.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\rotation skybox.cs" />
     <Compile Include="Assets\Simple Car Controller\Scripts\SCC_Demo.cs" />
@@ -242,14 +259,18 @@
     <Compile Include="Assets\scripts Main\SNOW.cs" />
     <Compile Include="Assets\scripts Main\Prop_Player_ite,.cs" />
     <Compile Include="Assets\2D LEVEL\script\CheckPoint 2D.cs" />
-    <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\ParticleCollision.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\Core Multiplayer\Base player script\Voting map system.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\NetProviders\PurrNet\PurrNetNetProvider.cs" />
     <Compile Include="Assets\scripts Main\Health_code\DamageObject.cs" />
     <Compile Include="Assets\scripts Main\CREATEOBJECT.cs" />
+    <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\ParticleCollision.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\NetProviders\FishNet\FishNetNetProvider.cs" />
     <Compile Include="Assets\scripts Main\OPENSCENE.cs" />
     <Compile Include="Assets\ououo\CameraWaterCheck.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Prop Hunt\code\Prop Hunt system.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\TextmeshPro name mirror.cs" />
     <Compile Include="Assets\scene levels\Secret levels\Stena.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Input\Mic\VcMicAudioInput.cs" />
     <Compile Include="Assets\scripts Main\followplayer.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Surf map\Scripts\InputData.cs" />
     <Compile Include="Assets\scene levels\cutscene\code cut\cristal perexod.cs" />
@@ -258,6 +279,7 @@
     <Compile Include="Assets\scripts Main\Q3PlayerController.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\Peremeshenie objrect.cs" />
     <Compile Include="Assets\scripts Main\water particle.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\Core Multiplayer\Base player script\visible object mirror\UI panel visible key.cs" />
     <Compile Include="Assets\scripts Main\MOVE.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Surf map\Scripts\GameLogic.cs" />
     <Compile Include="Assets\scripts Main\Setting save and load.cs" />
@@ -266,6 +288,7 @@
     <Compile Include="Assets\scripts Main\PLAYER GAME.cs" />
     <Compile Include="Assets\scripts Main\LAVA BUTTON.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\Smena hand sandbox.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Input\VcInputFilter.cs" />
     <Compile Include="Assets\scripts Main\DA\Grahits test.cs" />
     <Compile Include="Assets\scripts Main\MeshDestroy.cs" />
     <Compile Include="Assets\scripts Main\scenetrigger.cs" />
@@ -275,13 +298,13 @@
     <Compile Include="Assets\scripts Main\Loading system.cs" />
     <Compile Include="Assets\scripts Main\ANIM.cs" />
     <Compile Include="Assets\scripts Main\CONSOLE\console-manager.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\script\networkmanager\Lobby script\SteamLobbyHost.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\among us random.cs" />
     <Compile Include="Assets\scene levels\Secret levels\Hardest level\Stena.cs" />
     <Compile Include="Assets\Assets unity\Ultimate 10 Plus Shaders\Scripts\U10PS_ExampleReview.cs" />
     <Compile Include="Assets\scene levels\other story\code\healt system Rfish.cs" />
     <Compile Include="Assets\scene levels\cutscene\code cut\7 LEVEL CUT PEREXOD.cs" />
     <Compile Include="Assets\scripts Main\save.cs" />
-    <Compile Include="Assets\scene levels\Multi scene\script\BulletMirror.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Prop Hunt\code\Text look prophunt.cs" />
     <Compile Include="Assets\scene levels\other story\cave 1 level\Destroy cave.cs" />
     <Compile Include="Assets\ououo\Movement\MoveData.cs" />
@@ -290,6 +313,7 @@
     <Compile Include="Assets\scripts Main\Effects\Temperture.cs" />
     <Compile Include="Assets\Simple Car Controller\Scripts\SCC_Camera.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\Mirror Player.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\NetProviders\Mirror\MirrorFrame.cs" />
     <Compile Include="Assets\scene levels\MENU PARTS\EDITMAP\Code\X,Y,Z OSI.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Core Multiplayer\Base player script\PickupObject.cs" />
     <Compile Include="Assets\scripts Main\Animation LOrd wind 2 atack.cs" />
@@ -299,6 +323,7 @@
     <Compile Include="Assets\scripts Main\DA\Fbx models loader.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\BuletMover.cs" />
     <Compile Include="Assets\scripts Main\FULLSCREN SETTIN.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Utils\OneWayResampler.cs" />
     <Compile Include="Assets\scripts Main\Tornado.cs" />
     <Compile Include="Assets\Simple Car Controller\Scripts\SCC_Drivetrain.cs" />
     <Compile Include="Assets\scene levels\other story\code\FF.cs" />
@@ -312,6 +337,7 @@
     <Compile Include="Assets\nps\prefab\code sript\Oroboros.cs" />
     <Compile Include="Assets\scripts Main\ТРЮКИ.cs" />
     <Compile Include="Assets\scripts Main\Sceneloader.cs" />
+    <Compile Include="Assets\Octobus game_custom levels\Custom level button.cs" />
     <Compile Include="Assets\scripts Main\DIEEEEEE.cs" />
     <Compile Include="Assets\scripts Main\URL BUTTON.cs" />
     <Compile Include="Assets\SNOW\code\Kompas_snow.cs" />
@@ -331,8 +357,10 @@
     <Compile Include="Assets\scene levels\Multi scene\Core Multiplayer\Base player script\CubeColorSync.cs" />
     <Compile Include="Assets\scene levels\cutscene\code cut\CUT SCENE1.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\kick and ban player.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\script\networkmanager\Lobby script\Steam avatar profiel.cs" />
     <Compile Include="Assets\scripts Main\MENU TELEPORT.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\ScpEntity.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Output\VcOutputFilter.cs" />
     <Compile Include="Assets\scripts Main\Vsync Settings.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\Import MP3.cs" />
     <Compile Include="Assets\scripts Main\NewBehaviourScript.cs" />
@@ -341,11 +369,14 @@
     <Compile Include="Assets\Cityyy.cs" />
     <Compile Include="Assets\scripts Main\CITY TELEPOT.cs" />
     <Compile Include="Assets\scripts Main\DELETEDOGO.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Output\OnAudioFilterReadVcOutput\OnAudioFilterReadFrame.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\NetProviders\NGO\NgoFrame.cs" />
     <Compile Include="Assets\scripts Main\SKOROST UGROKA.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileTextMultiple.cs" />
     <Compile Include="Assets\scripts Main\pause.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
     <Compile Include="Assets\scripts Main\OIO.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Tests\OnAudioFilterReadVcOutputTestAdapter.cs" />
     <Compile Include="Assets\scripts Main\KEybourar settiings.cs" />
     <Compile Include="Assets\scripts Main\TOXIC1.cs" />
     <Compile Include="Assets\scripts Main\location.cs" />
@@ -367,6 +398,8 @@
     <Compile Include="Assets\scripts Main\CAMERAOFF.cs" />
     <Compile Include="Assets\scripts Main\Input active object.cs" />
     <Compile Include="Assets\Simple Car Controller\Scripts\SCC_Singleton.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Output\AudioSource\VcAudioSourceOutput.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\script\test\TerrainChunk.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\destroy object.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Prop Hunt\code\Stem admin Lazurut.cs" />
     <Compile Include="Assets\scripts Main\Time second.cs" />
@@ -391,7 +424,10 @@
     <Compile Include="Assets\scene levels\Multi scene\script\Pick up object.cs" />
     <Compile Include="Assets\scripts Main\ISLAND2.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\object manager.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\NetProviders\INetProvider.cs" />
     <Compile Include="Assets\scene levels\MENU LEVELS\Navmesh_light level\deep_water\Press E vagonetka.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\NetProviders\Netick\NetickNetProvider.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Opus\VcDecoder.cs" />
     <Compile Include="Assets\scene levels\MENU PARTS\EDITMAP\Code\Code sctipt.cs" />
     <Compile Include="Assets\scene levels\MENU PARTS\EDITMAP\Code\Render texture.cs" />
     <Compile Include="Assets\scripts Main\Pokaz.cs" />
@@ -400,6 +436,7 @@
     <Compile Include="Assets\scene levels\Multi scene\script\LAZER.cs" />
     <Compile Include="Assets\scene levels\MENU PARTS\EDITMAP\Code\position camera.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Surf map\Scripts\PlayerLogic.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\script\Ladder.cs" />
     <Compile Include="Assets\scripts Main\script\Relovler.cs" />
     <Compile Include="Assets\scripts Main\scene save\Savelevelmanger.cs" />
     <Compile Include="Assets\scripts Main\Distans material.cs" />
@@ -423,7 +460,9 @@
     <Compile Include="Assets\Simple Car Controller\Scripts\SCC_Wheel.cs" />
     <Compile Include="Assets\scripts Main\COLESO.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\STRELBA1.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\VcConfig.cs" />
     <Compile Include="Assets\scripts Main\SOUND1.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Output\AudioSource\VcAudioClip.cs" />
     <Compile Include="Assets\scene levels\MENU PARTS\EDITMAP\Code\New window.cs" />
     <Compile Include="Assets\scene levels\MENU PARTS\EDITMAP\Code\Save map.cs" />
     <Compile Include="Assets\scripts Main\level2.cs" />
@@ -435,6 +474,7 @@
     <Compile Include="Assets\scripts Main\OAO.cs" />
     <Compile Include="Assets\scripts Main\TRIGGER OCTROV.cs" />
     <Compile Include="Assets\scripts Main\RESTART.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\script\test\TerrainChunkManager.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Core Multiplayer\Base player script\identity.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Core Multiplayer\web camera\Web camera manager.cs" />
     <Compile Include="Assets\scripts Main\планета.cs" />
@@ -443,9 +483,12 @@
     <Compile Include="Assets\scripts Main\Player Respawn.cs" />
     <Compile Include="Assets\scripts Main\Active cursor.cs" />
     <Compile Include="Assets\scripts Main\Optimization triger.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Output\Multicast\MulticastVcAudioOutput.cs" />
     <Compile Include="Assets\scripts Main\FINAL TRIGGER.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Surf map\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Surf map\Scripts\Tracer.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Output\OnAudioFilterReadVcOutput\OnAudioFilterReadVcConfig.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Utils\FrameStopwatch.cs" />
     <Compile Include="Assets\Assets unity\AmplifyOcclusion\Scripts\AmplifyOcclusionEffect.cs" />
     <Compile Include="Assets\scripts Main\AI.SHOOT.cs" />
     <Compile Include="Assets\scripts Main\REVAMPSAVE.cs" />
@@ -492,8 +535,10 @@
     <Compile Include="Assets\scene levels\MENU PARTS\EDITMAP\Code\SpawnerObject.cs" />
     <Compile Include="Assets\scripts Main\Britness Settings.cs" />
     <Compile Include="Assets\scripts Main\Activate object.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\script\networkmanager\Lobby script\LobbySteamProfile.cs" />
     <Compile Include="Assets\scripts Main\script\Test controller.cs" />
     <Compile Include="Assets\scripts Main\scene save\testing save\Save levels_manager.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\NetProviders\Netick\MetaVoiceChatNetick.cs" />
     <Compile Include="Assets\scripts Main\ScoreMovement.cs" />
     <Compile Include="Assets\scripts Main\Debug scene player.cs" />
     <Compile Include="Assets\scripts Main\CAMERA12.cs" />
@@ -507,6 +552,7 @@
     <Compile Include="Assets\StandaloneFileBrowser\Sample\BasicSample.cs" />
     <Compile Include="Assets\Simple Car Controller\Scripts\SCC_CreateWheelCollider.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\GunShoot.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Output\OnAudioFilterReadVcOutput\OnAudioFilterReadVcOutput.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\Fade out music.cs" />
     <Compile Include="Assets\scene levels\other story\code\Damage collider.cs" />
     <Compile Include="Assets\scene levels\other story\code\CONTRLOLLER.cs" />
@@ -521,13 +567,13 @@
     <Compile Include="Assets\ououo\TraceUtil\Tracer.cs" />
     <Compile Include="Assets\scripts Main\script\MULTI\OOW.cs" />
     <Compile Include="Assets\scripts Main\Player controller.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\script\networkmanager\Lobby script\LobbySteamList.cs" />
     <Compile Include="Assets\LightningBolt\LightningBoltScript.cs" />
     <Compile Include="Assets\scripts Main\andrei_papka.cs" />
     <Compile Include="Assets\scripts Main\zahita.cs" />
     <Compile Include="Assets\Assets unity\Ultimate 10 Plus Shaders\Scripts\U10PS_SnowOverTime.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileImage.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\hand destroy.cs" />
-    <Compile Include="Assets\scene levels\Multi scene\script\networkmanager\steamchat.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserMac.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Core Multiplayer\Base player script\Bullt mirrors.cs" />
     <Compile Include="Assets\scene levels\Secret levels\ULTRAKILL Gnevys\code\arm raketa.cs" />
@@ -546,7 +592,6 @@
     <Compile Include="Assets\scripts Main\script\AGENT.cs" />
     <Compile Include="Assets\scene levels\Secret levels\ULTRAKILL Gnevys\code\Hand kill.cs" />
     <Compile Include="Assets\scripts Main\Button click_.cs" />
-    <Compile Include="Assets\scripts Main\Octobus game_custom levels\Custom level button.cs" />
     <Compile Include="Assets\scripts Main\Resulotion_screen_game.cs" />
     <Compile Include="Assets\scripts Main\ConstantMovement.cs" />
     <Compile Include="Assets\scripts Main\Levelsave.cs" />
@@ -569,9 +614,10 @@
     <Compile Include="Assets\scene levels\Secret levels\ULTRAKILL Gnevys\code\Player_healt.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\test\LevelNetworkManager.cs" />
     <Compile Include="Assets\scripts Main\DA\MP4.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Output\VcJitter.cs" />
     <Compile Include="Assets\БОЛОТ ПЕЩЕРА\TELEPORT.cs" />
     <Compile Include="Assets\scripts Main\SCRITAL1.cs" />
-    <Compile Include="Assets\scripts Main\Generation world.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\NetEQ\NetEqInterop.cs" />
     <Compile Include="Assets\scripts Main\scene save\Save settings system.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\smena map.cs" />
     <Compile Include="Assets\ououo\Water.cs" />
@@ -583,9 +629,11 @@
     <Compile Include="Assets\scripts Main\клейк.cs" />
     <Compile Include="Assets\scripts Main\script\testLook.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Cinema Multi\Script\NetworkVideoPlayer.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\NetProviders\Mirror\MirrorNetProvider.cs" />
     <Compile Include="Assets\scripts Main\2D llevel.cs" />
     <Compile Include="Assets\scripts Main\DA\particle.cs" />
     <Compile Include="Assets\scripts Main\Healt bar.cs" />
+    <Compile Include="Assets\Metater\MetaVoiceChat\Opus\VcEncoder.cs" />
     <Compile Include="Assets\ПЛАНЕТИ 3 УРОВЕНЬ\BASHI 10 LEVEL.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Surf map\Scripts\SurfController.cs" />
     <Compile Include="Assets\scripts Main\script\Health.cs" />
@@ -595,6 +643,7 @@
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\README.md.txt" />
+    <None Include="Assets\Metater\MetaVoiceChat\Examples\DropdownSetting.cs.txt" />
     <None Include="Assets\scripts Main\REVAMPLOAD.txt" />
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Mdb.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -616,6 +665,7 @@
     <None Include="Assets\edgegap-unity-plugin\Runtime\BootstrapTemplates\EdgegapServerBootstrapPhotonFusion2Temp.cs.txt" />
     <None Include="Assets\Assets unity\AmplifyOcclusion\Shaders\Blur.shader" />
     <None Include="Assets\Custom Shader\Shader\Lava.shader" />
+    <None Include="Assets\Metater\MetaVoiceChat\VERSION.txt" />
     <None Include="Assets\Assets unity\Poplar Tree FREE\Shaders\ALP Billboard Cross Wind.shader" />
     <None Include="Assets\Assets unity\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.compute" />
     <None Include="Assets\Assets unity\AmplifyOcclusion\Shaders\OcclusionFunctions.cginc" />
@@ -626,6 +676,7 @@
     <None Include="Assets\Assets unity\AmplifyOcclusion\Shaders\Apply.shader" />
     <None Include="Assets\Mirror\version.txt" />
     <None Include="Assets\progress.txt" />
+    <None Include="Assets\Metater\MetaVoiceChat\Examples\InputSensitivityUi.cs.txt" />
     <None Include="Assets\Custom Shader\black hole\Black hole shader.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\StreamingAssets\SAVEEDIT\level save\SAVEEDIT.txt" />
@@ -641,9 +692,11 @@
     <None Include="Assets\Assets unity\BushGrassBend\Demo\Example1\README.txt" />
     <None Include="Assets\ScriptTemplates\53-Mirror__Network Behaviour With Actions-NewNetworkBehaviourWithActions.cs.txt" />
     <None Include="Assets\SAVEEDIT\level save\SAVEEDIT.txt" />
+    <None Include="Assets\Metater\MetaVoiceChat\Examples\PlayerMouthLocal.cs.txt" />
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Rocks.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Assets unity\AmplifyOcclusion\Shaders\BlurFunctions.cginc" />
+    <None Include="Assets\AddressableAssetsData\link.xml" />
     <None Include="Assets\edgegap-unity-plugin\Runtime\BootstrapTemplates\EdgegapServerBootstrapMirrorTemp.cs.txt" />
     <None Include="Assets\scene levels\Multi scene\Speedrun level\shader\EdgeOutline.shader" />
     <None Include="Assets\com.rlabrecque.steamworks.net\Plugins\steam_api64.dll" />
@@ -657,6 +710,7 @@
     <None Include="Assets\LightningBolt\Readme.txt" />
     <None Include="Assets\scene levels\Multi scene\script\networkmanager\LICENSE.txt" />
     <None Include="Assets\Custom Shader\Shader\test 02.shader" />
+    <None Include="Assets\Metater\MetaVoiceChat\NetEQ\meta_voice_chat_neteq.dll" />
     <None Include="Assets\Custom Shader\Shader\CubeMap Better+.shader" />
     <None Include="Assets\Assets unity\AmplifyOcclusion\Readme.txt" />
     <None Include="Assets\Custom Shader\Shader\Skybox material.shader" />
@@ -666,14 +720,15 @@
     <None Include="Assets\Custom Shader\Shader\Temperature.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\Custom Shader\Shader\EE.shader" />
-    <None Include="Assets\AddressableAssetsData\link.xml" />
     <None Include="Assets\ScriptTemplates\57-Mirror__Network Transform-NewNetworkTransform.cs.txt" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\Assets unity\Ultimate 10 Plus Shaders\Shaders\Ocean.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\Metater\MetaVoiceChat\Examples\PlayerPushToTalk.cs.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
     <None Include="Assets\Custom Shader\Shader\Stesnil_Mask.shader" />
     <None Include="Assets\Assets unity\Ultimate 10 Plus Shaders\Shaders\Dissolve.shader" />
+    <None Include="Assets\Metater\MetaVoiceChat\Examples\PushToTalkVcInputFilter.cs.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\Assets unity\Poplar Tree FREE\Shaders\ALP Surface Detail.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
@@ -683,19 +738,23 @@
     <None Include="Assets\Assets unity\AmplifyOcclusion\Shaders\GTAO.cginc" />
     <None Include="Assets\Custom Shader\mirror\MirrorReflection.shader" />
     <None Include="Assets\ScriptTemplates\52-Mirror__Network Behaviour-NewNetworkBehaviour.cs.txt" />
+    <None Include="Assets\Metater\MetaVoiceChat\Examples\SettingsUi.cs.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Assets unity\QuickOutline\Readme.txt" />
+    <None Include="Assets\Metater\MetaVoiceChat\Concentus.2.2.2\lib\netstandard2.0\Concentus.xml" />
     <None Include="Assets\Assets unity\AmplifyOcclusion\Shaders\TemporalFilter.cginc" />
     <None Include="Assets\Assets unity\Ultimate 10 Plus Shaders\Shaders\Outline.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\edit maps\SavedScene.txt" />
     <None Include="Assets\Assets unity\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus Line.shader" />
     <None Include="Assets\Custom Shader\Snow Shader 3D\Shaders\SnowHeightMapUpdate.shader" />
+    <None Include="Assets\Metater\MetaVoiceChat\Examples\IInitableSetting.cs.txt" />
     <None Include="Assets\Mirror\Notice.txt" />
     <None Include="Assets\Assets unity\Poplar Tree FREE\Shaders\ALP Water Gestner Waves.shader" />
     <None Include="Assets\Custom Shader\Wave disto\VortexDistortion.shader" />
     <None Include="Assets\Assets unity\Ultimate 10 Plus Shaders\Shaders\Snow.shader" />
     <None Include="Assets\Simple Car Controller\SCC by BoneCracker Games License.txt" />
+    <None Include="Assets\Metater\MetaVoiceChat\Examples\MuteAndDeafen.cs.txt" />
     <None Include="Assets\Assets unity\AmplifyOcclusion\Shaders\Occlusion.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Assets unity\Ultimate 10 Plus Shaders\Shaders\Lava3D.shader" />
@@ -704,6 +763,7 @@
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\License.txt" />
     <None Include="Assets\Assets unity\BushGrassBend\Demo\Example2\README.txt" />
     <None Include="Assets\AssetsSAVEDATA.txt" />
+    <None Include="Assets\Metater\MetaVoiceChat\Examples\MaxFpsSetting.cs.txt" />
     <None Include="Assets\Assets unity\Poplar Tree FREE\Shaders\ALP Surface Detail Wind.shader" />
     <None Include="Assets\ScriptTemplates\55-Mirror__Network Room Player-NewNetworkRoomPlayer.cs.txt" />
     <None Include="Assets\StreamingAssets\SAVEDATA.txt" />
@@ -720,12 +780,15 @@
     <None Include="Assets\Custom Shader\Fog\Fog material.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\ScriptTemplates\50-Mirror__Network Manager-NewNetworkManager.cs.txt" />
+    <None Include="Assets\Metater\MetaVoiceChat\Concentus.2.2.2\lib\netstandard2.0\Concentus.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\ScriptTemplates\54-Mirror__Network Room Manager-NewNetworkRoomManager.cs.txt" />
+    <None Include="Assets\Metater\MetaVoiceChat\Examples\SpeakerUi.cs.txt" />
     <None Include="Assets\Assets unity\QuickOutline\Resources\Shaders\OutlineFill.shader" />
     <None Include="Assets\Assets unity\Ultimate 10 Plus Shaders\Shaders\Simple Sine Wave.shader" />
     <None Include="Assets\UnityTechnologies\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\Metater\MetaVoiceChat\Examples\InputDeviceSetting.cs.txt" />
     <None Include="Assets\Custom Shader\Shader\tilling map.shader" />
     <None Include="Assets\Assets unity\Poplar Tree FREE\Shaders\ALP Cutout Translucency Wind.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
@@ -734,6 +797,9 @@
     <None Include="Assets\Assets unity\AmplifyOcclusion\Shaders\ApplyPostEffect.cginc" />
     <None Include="Assets\Assets unity\AmplifyOcclusion\Shaders\Common.cginc" />
     <None Include="Assets\Assets unity\AmplifyOcclusion\Shaders\CommonFunctions.cginc" />
+    <None Include="Assets\Metater\MetaVoiceChat\Examples\SliderSetting.cs.txt" />
+    <None Include="Assets\Metater\MetaVoiceChat\Examples\PlayerMouth.cs.txt" />
+    <None Include="Assets\Metater\MetaVoiceChat\Examples\PlayerVoiceChat.cs.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\Mirror\Hosting\Readme.txt" />
   </ItemGroup>
@@ -840,6 +906,10 @@
     </Reference>
     <Reference Include="UnityEngine.LocalizationModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.20f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\Variations\mono\Managed\UnityEngine.LocalizationModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.NVIDIAModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.20f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\Variations\mono\Managed\UnityEngine.NVIDIAModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule">
@@ -1028,6 +1098,10 @@
     </Reference>
     <Reference Include="System.Windows.Forms">
       <HintPath>Assets\StandaloneFileBrowser\Plugins\System.Windows.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Concentus">
+      <HintPath>Assets\Metater\MetaVoiceChat\Concentus.2.2.2\lib\netstandard2.0\Concentus.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">
@@ -1539,6 +1613,10 @@
     <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.Player.csproj">
       <Project>{EFEE91A3-7B87-94A2-9C87-CACBE1347BCF}</Project>
       <Name>Unity.RenderPipelines.Core.Runtime.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="FizzySteamworks.Player.csproj">
+      <Project>{D4CB6860-7347-E72D-119A-5E6C61F8D045}</Project>
+      <Name>FizzySteamworks.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Postprocessing.Runtime.Player.csproj">
       <Project>{B2AAB86B-0A5F-C00A-D5E6-844D7EE945EC}</Project>

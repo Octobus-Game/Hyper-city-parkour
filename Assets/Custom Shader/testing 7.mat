@@ -45,7 +45,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
         m_Texture: {fileID: 2800000, guid: aeb57cb265ffef044a186ec84720a800, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 0.01, y: 0.01}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: b8a71bd6e374b844185e388ae80b6723, type: 3}
@@ -57,7 +57,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
         m_Texture: {fileID: 2800000, guid: 4b4334fd8d2eee24f9acfda6725a0794, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 0.01, y: 0.01}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
@@ -69,7 +69,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Brightness: 1
+    - _Brightness: 2
     - _BumpScale: 1
     - _ColorVariation: 0
     - _Contrast: 1
@@ -81,14 +81,14 @@ Material:
     - _GlossyReflections: 1
     - _HeightMaxSamples: 64
     - _HeightMinSamples: 16
-    - _HeightScale: 0.0005
+    - _HeightScale: 0
     - _Hue: 0
     - _Metallic: 0
     - _Mode: 0
-    - _NormalStrength: 1.46
+    - _NormalStrength: 0.34
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Rotation: 0.707
+    - _Rotation: 0
     - _Saturation: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

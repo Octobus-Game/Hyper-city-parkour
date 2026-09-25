@@ -9705,123 +9705,143 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8291848253269211922, guid: 1c3af4eba365f6843a2830b6c904bba9, type: 3}
-  firePoint: {fileID: 2548625478858423359}
-  bulletSpeed: 329
-  fireRate: 0.5
-  cooldownTime: 5
+  _camera: {fileID: 0}
+  _muzzlePoint: {fileID: 0}
+  _range: 100
+  _damage: 25
+  _impactForce: 30
+  _hitLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  _autoFire: 0
+  _fireRate: 600
+  pause: {fileID: 0}
+  _useMagazine: 1
+  _magazineSize: 30
+  _currentAmmo: 30
+  _reloadTime: 2
+  _useSpread: 0
+  _spreadAngle: 2
+  _chargedShotEnabled: 1
+  _chargeKey: 102
+  _chargeTime: 2
+  _maxDamageMultiplier: 100
+  _chargeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _chargeEffect: {fileID: 0}
+  _chargeSound: {fileID: 0}
+  _fullyChargedSound: {fileID: 0}
+  _chargeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _orbitTrapKey: 113
   orbitTrapPrefab: {fileID: 0}
   orbitTrapSpeed: 15
   orbitTrapFireRate: 1
   maxOrbitTraps: 3
   orbitTrapLifetime: 30
-  enableChargedShot: 0
-  chargeTime: 2
-  maxDamageMultiplier: 3
-  maxSpeedMultiplier: 3
-  chargeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  chargeEffect: {fileID: 0}
-  chargeSound: {fileID: 0}
-  fullyChargedSound: {fileID: 0}
-  chargeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  showChargeIndicator: 1
-  recoilTarget: {fileID: 0}
-  enablePositionRecoil: 1
-  enableRotationRecoil: 1
-  recoilKickback: 0.15
-  recoilKickUp: 0.05
-  recoilKickSide: 0.02
-  recoilPositionReturnSpeed: 10
-  recoilPitch: 2
-  recoilYaw: 0.5
-  recoilRoll: 0.3
-  recoilRotationReturnSpeed: 8
-  chargedRecoilMultiplier: 2.5
-  orbitTrapRecoilMultiplier: 1.5
-  recoilKickCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  recoilReturnCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  muzzleFlash: {fileID: 0}
-  shootSound: {fileID: 8300000, guid: 871c4b8bded0cba418960c0094f4da12, type: 3}
   orbitTrapShootSound: {fileID: 0}
-  audioSource: {fileID: 5936186135658441713}
-  animator: {fileID: 0}
-  shootAnimationTrigger: Shoot
-  chargeAnimationTrigger: Charge
   orbitTrapAnimationTrigger: OrbitTrap
-  hitEffect: {fileID: 0}
-  targetPrefab: {fileID: 0}
-  playerCamera: {fileID: 8732327122493319715}
-  shakeChance: 0.691
-  shakeIntensity: 0.5
-  shakeDuration: 0.2
+  _recoilEnabled: 1
+  _recoilPitchAmount: 2
+  _recoilYawAmount: 0.5
+  _recoilSnappiness: 20
+  _recoilReturnSpeed: 8
+  _maxRecoilPitch: 15
+  _weaponTransform: {fileID: 0}
+  _weaponKickback: {x: 0, y: 0, z: -0.15}
+  _weaponKickRotation: {x: -5, y: 0, z: 0}
+  _weaponReturnSpeed: 10
+  _cameraShakeEnabled: 1
+  _shakeAmplitudeX: 0.02
+  _shakeAmplitudeY: 0.03
+  _shakeAmplitudeZ: 0.01
+  _shakeDamping: 12
+  _shakeFrequency: 25
+  _shakeAccumulation: 0.3
+  _muzzleHeatEnabled: 1
+  _muzzleRenderer: {fileID: 0}
+  _muzzleMaterialIndex: 0
+  _heatPerShot: 0.18
+  _cooldownRate: 0.12
+  _heatRiseSpeed: 20
+  _maxHeat: 1
+  _overheatThreshold: 0.95
+  _overheatEnabled: 0
+  _overheatCooldownTime: 3
+  _heatText: {fileID: 0}
+  _maxDisplayTemp: 800
+  _weaponAnimator: {fileID: 0}
+  _animShoot: Shoot
+  _animReload: Reload
+  _animAim: IsAiming
+  _animWalk: IsWalking
+  _animSpeed: MoveSpeed
+  _animCharge: Charge
+  _aimingEnabled: 1
+  _adsPosition: {x: 0, y: -0.05, z: 0.1}
+  _adsSpeed: 10
+  _idleBobEnabled: 1
+  _idleBobAmplY: 0.003
+  _idleBobAmplX: 0.002
+  _idleBobSpeed: 1.2
+  _idleSwayAmount: 0.3
+  _walkBobEnabled: 1
+  _walkBobAmplY: 0.008
+  _walkBobAmplX: 0.005
+  _walkBobFrequency: 2
+  _bobBlendSpeed: 5
+  _proceduralReload: 1
+  _reloadDropOffset: {x: 0, y: -0.12, z: 0.05}
+  _reloadTiltAngle: {x: 30, y: 15, z: 0}
+  _reloadDropPhase: 0.4
+  _muzzleFlash: {fileID: 0}
+  _impactEffect: {fileID: 0}
+  _bloodEffect: {fileID: 0}
+  _shellEjectEffect: {fileID: 0}
+  _audiomixer: {fileID: 0}
+  _audioSource: {fileID: 0}
+  _shootSounds: []
+  _impactSound: {fileID: 0}
+  _hitSound: {fileID: 0}
+  _reloadSound: {fileID: 0}
+  _emptySound: {fileID: 0}
+  _shootVolume: 1
+  _impactVolume: 0.7
+  _bulletHoleDecal: {fileID: 0}
+  _decalLifetime: 10
+  _showRayInScene: 1
+  _debugRayDuration: 0.5
+  _ammoText: {fileID: 0}
+  _ammoStateText: {fileID: 0}
+  _colorFull: {r: 1, g: 1, b: 1, a: 1}
+  _colorMid: {r: 1, g: 0.8, b: 0.2, a: 1}
+  _colorLow: {r: 1, g: 0.2, b: 0.1, a: 1}
+  _colorReload: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  _midThreshold: 0.5
+  _lowThreshold: 0.25
+  _blinkWhenLow: 1
+  _blinkSpeed: 3
 --- !u!1 &3551191679641286712
 GameObject:
   m_ObjectHideFlags: 0
@@ -29435,11 +29455,6 @@ PrefabInstance:
       addedObject: {fileID: 2548625478858423359}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40800b6d07583a347964190591fd010b, type: 3}
---- !u!82 &5936186135658441713 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 168457184012172736, guid: 40800b6d07583a347964190591fd010b, type: 3}
-  m_PrefabInstance: {fileID: 5780347290831902257}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6024345368084729584 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 264917490710649025, guid: 40800b6d07583a347964190591fd010b, type: 3}
@@ -29715,6 +29730,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1526964690268444965, guid: 8506f035b4ee1cd469952b5305da4e34, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a78fbcd256f11dc4f8ee45764b5b31fe, type: 2}
+    - target: {fileID: -1526964690268444965, guid: 8506f035b4ee1cd469952b5305da4e34, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: a78fbcd256f11dc4f8ee45764b5b31fe, type: 2}
@@ -29813,7 +29832,7 @@ PrefabInstance:
     - target: {fileID: 7603786706384944740, guid: 8506f035b4ee1cd469952b5305da4e34, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: -2813467912831258332, guid: 8506f035b4ee1cd469952b5305da4e34, type: 3}
+      objectReference: {fileID: 2100000, guid: a78fbcd256f11dc4f8ee45764b5b31fe, type: 2}
     - target: {fileID: 8416272007918961125, guid: 8506f035b4ee1cd469952b5305da4e34, type: 3}
       propertyPath: m_Layer
       value: 0
