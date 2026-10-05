@@ -13,130 +13,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Keys:
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-weapons__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-weaponIcons__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-buttons__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-Ogject__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-particleSystems__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-Channels__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-colors__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-bulletTags__UnityEngine.UIElements.ListView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-_walkFootstepSounds__UnityEngine.UIElements.ListView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-_runFootstepSounds__UnityEngine.UIElements.ListView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-cameraScripts__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-sceneIcons__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-_trailsPositions__UnityEngine.UIElements.ListView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-exhaustParticles__UnityEngine.UIElements.ListView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-wheels__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-Particles__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-bulletTags__UnityEngine.UIElements.ListView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-activateObjects__UnityEngine.UIElements.ListView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-checkAndDeactivateObjects__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-portals__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-travellers__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-_objects__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-_buttons__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-_objectsToDisable__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-_disableButtons__UnityEngine.UIElements.ListView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-additionalResumeButtons__UnityEngine.UIElements.ListView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-camerasToFreeze__UnityEngine.UIElements.ListView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-objectsToDisableOnPause__UnityEngine.UIElements.ListView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-objectsToEnableOnPause__UnityEngine.UIElements.ListView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-keybinds__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-targetTags__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-collisionTags__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-destructibleObjects__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-destructionSounds__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-collisionSounds__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-highSpeedCollisionSounds__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-m_ExcludedProperties__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-rayMarchTransforms__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-channels__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-OnServerFound.m_PersistentCalls.m_Calls__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-teleportDestinations__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-profileGroupTypes__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-environments__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-m_Elements__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-heatHazeMaterials__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-_tagList__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-skyboxMaterials__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-TEXT__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-CategoryColors__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-LegendTexts__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-_shootSounds__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-m_Rules__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-m_ComplexSelectors__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-floats__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-dimensions__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-colors__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-strings__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-assets__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-imports__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-m_FlattenedImportedStyleSheets__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-scalableImages__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-m_StringDatabase.m_SmartFormat.m_Sources.Array.data[0].m_Names__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-m_StringDatabase.m_SmartFormat.m_Formatters.Array.data[0].m_Names__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-m_StringDatabase.m_SmartFormat.m_Formatters.Array.data[1].m_Names__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-m_StringDatabase.m_SmartFormat.m_Formatters.Array.data[2].m_Names__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-m_StringDatabase.m_SmartFormat.m_Formatters.Array.data[3].m_Names__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-m_StringDatabase.m_SmartFormat.m_Formatters.Array.data[4].m_Names__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-m_StringDatabase.m_SmartFormat.m_Formatters.Array.data[5].m_Names__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-m_StringDatabase.m_SmartFormat.m_Formatters.Array.data[6].m_Names__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-m_StringDatabase.m_SmartFormat.m_Formatters.Array.data[7].m_Names__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-m_StringDatabase.m_SmartFormat.m_Formatters.Array.data[8].m_Names__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-Channels__UnityEngine.UIElements.ListView
-  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-maps__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-sceneIcons__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-weaknesses__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-weaknessMultipliers__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-activateOnDeath__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-onDeath.m_PersistentCalls.m_Calls__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-onEnable.toActivateObjects__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-onEnable.toDisActivateObjects__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-onEnable.onActivate.m_PersistentCalls.m_Calls__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-onEnable.onDisActivate.m_PersistentCalls.m_Calls__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-burners__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-buffUnaffectedRenderers__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-hurtSounds__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-destroyOnDeath__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-extraDamageZones__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-windUpSounds__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-spawnOnDeath__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-rotatorWings__UnityEngine.UIElements.ListView
   m_Values:
   - '{}'
   - '{}'
   - '{}'
+  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":0.0,"anchoredItemIndex":0,"anchorOffset":0.0}}'
+  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":0.0,"anchoredItemIndex":0,"anchorOffset":0.0}}'
+  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":0.0,"anchoredItemIndex":0,"anchorOffset":0.0}}'
   - '{}'
   - '{}'
   - '{}'
   - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":21.600000381469728,"anchoredItemIndex":0,"anchorOffset":0.0}}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
+  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":0.0,"anchoredItemIndex":0,"anchorOffset":0.0}}'
+  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":0.0,"anchoredItemIndex":0,"anchorOffset":0.0}}'
+  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":0.0,"anchoredItemIndex":0,"anchorOffset":0.0}}'
+  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":0.0,"anchoredItemIndex":0,"anchorOffset":0.0}}'
+  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":0.0,"anchoredItemIndex":0,"anchorOffset":0.0}}'
   - '{}'
   - '{}'
   - '{}'

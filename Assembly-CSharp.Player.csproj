@@ -84,6 +84,7 @@
     <Compile Include="Assets\scene levels\Multi scene\script\code private.cs" />
     <Compile Include="Assets\scene levels\MENU PARTS\EDITMAP\Code\open load file.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\VcPushToTalk.cs" />
+    <Compile Include="Assets\Assets unity\Portals\Scripts\Demo\FPSController.cs" />
     <Compile Include="Assets\scripts Main\IK kinematica.cs" />
     <Compile Include="Assets\scripts Main\Stopwatch.cs" />
     <Compile Include="Assets\scripts Main\NPS code\Random clothes nps.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Assets\scene levels\Multi scene\script\STRELBA mirror.cs" />
     <Compile Include="Assets\scripts Main\cameraswitheer.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Core Multiplayer\Base player script\PlayerSprayTexture.cs" />
+    <Compile Include="Assets\Assets unity\Portals\Scripts\Core\CameraUtility.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Surf map\Scripts\MovementConfig.cs" />
     <Compile Include="Assets\scene levels\side_levels\PUzzles\slova\Puzzles sclovo.cs" />
     <Compile Include="Assets\scripts Main\Gravity_object.cs" />
@@ -130,6 +132,7 @@
     <Compile Include="Assets\scripts Main\rotate object.cs" />
     <Compile Include="Assets\Metater\MetaVoiceChat\NetProviders\RiptideNetworking\RiptideNetworkingNetProvider.cs" />
     <Compile Include="Assets\ououo\Movement\MovementConfig.cs" />
+    <Compile Include="Assets\Assets unity\Portals\Scripts\Demo\CloudTest.cs" />
     <Compile Include="Assets\scripts Main\Scroll ui.cs" />
     <Compile Include="Assets\Metater\MetaVoiceChat\NetProviders\LiteNetLib\LiteNetLibFrame.cs" />
     <Compile Include="Assets\scripts Main\TRIGGER ISLAMD 3.cs" />
@@ -155,6 +158,7 @@
     <Compile Include="Assets\scene levels\MENU PARTS\EDITMAP\Code\Select material.cs" />
     <Compile Include="Assets\scene levels\MENU LEVELS\Navmesh_light level\12-- Spider temple\car controller.cs" />
     <Compile Include="Assets\Assets unity\Ultimate 10 Plus Shaders\Scripts\U10PS_DissolveOverTime.cs" />
+    <Compile Include="Assets\Assets unity\Portals\Scripts\Core\MainCamera.cs" />
     <Compile Include="Assets\scene levels\other story\code\tRGGER SOUND QUIT.cs" />
     <Compile Include="Assets\scripts Main\FINAL.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
@@ -190,6 +194,7 @@
     <Compile Include="Assets\ououo\Ladder.cs" />
     <Compile Include="Assets\scripts Main\2D OGO.cs" />
     <Compile Include="Assets\Custom Shader\code\4d script.cs" />
+    <Compile Include="Assets\Assets unity\Portals\Scripts\Demo\Spawner.cs" />
     <Compile Include="Assets\scripts Main\Panel free moving.cs" />
     <Compile Include="Assets\scripts Main\Portal.cs" />
     <Compile Include="Assets\ououo\Extensions\VectorExtensions.cs" />
@@ -212,6 +217,7 @@
     <Compile Include="Assets\scripts Main\Change color sskybox.cs" />
     <Compile Include="Assets\scripts Main\GraphicsApiDropdown.cs" />
     <Compile Include="Assets\scripts Main\HAPKU.cs" />
+    <Compile Include="Assets\Assets unity\Portals\Scripts\Core\Portal.cs" />
     <Compile Include="Assets\scripts Main\Vertical sync.cs" />
     <Compile Include="Assets\scripts Main\Exit1.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\networkmanager\P2p system.cs" />
@@ -370,11 +376,13 @@
     <Compile Include="Assets\scripts Main\CITY TELEPOT.cs" />
     <Compile Include="Assets\scripts Main\DELETEDOGO.cs" />
     <Compile Include="Assets\Metater\MetaVoiceChat\Output\OnAudioFilterReadVcOutput\OnAudioFilterReadFrame.cs" />
+    <Compile Include="Assets\Assets unity\Portals\Scripts\Demo\PortalPhysicsObject.cs" />
     <Compile Include="Assets\Metater\MetaVoiceChat\NetProviders\NGO\NgoFrame.cs" />
     <Compile Include="Assets\scripts Main\SKOROST UGROKA.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileTextMultiple.cs" />
     <Compile Include="Assets\scripts Main\pause.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
+    <Compile Include="Assets\Assets unity\Portals\Scripts\Core\PortalTraveller.cs" />
     <Compile Include="Assets\scripts Main\OIO.cs" />
     <Compile Include="Assets\Metater\MetaVoiceChat\Tests\OnAudioFilterReadVcOutputTestAdapter.cs" />
     <Compile Include="Assets\scripts Main\KEybourar settiings.cs" />
@@ -576,11 +584,14 @@
     <Compile Include="Assets\scene levels\Multi scene\script\hand destroy.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\StandaloneFileBrowserMac.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Core Multiplayer\Base player script\Bullt mirrors.cs" />
+    <Compile Include="Assets\Assets unity\Portals\Scripts\Demo\CloudBehaviorTest.cs" />
     <Compile Include="Assets\scene levels\Secret levels\ULTRAKILL Gnevys\code\arm raketa.cs" />
     <Compile Include="Assets\scripts Main\speed Player ui.cs" />
+    <Compile Include="Assets\Assets unity\Portals\Scripts\Demo\CloudCoreTest.cs" />
     <Compile Include="Assets\scripts Main\script\FBX Loader_test scene.cs" />
     <Compile Include="Assets\scripts Main\HAPPY TIME.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\bullet.cs" />
+    <Compile Include="Assets\Assets unity\Portals\Scripts\Demo\Car.cs" />
     <Compile Include="Assets\SNOW\code\Random material.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\ExtinguishableFire.cs" />
     <Compile Include="Assets\scene levels\MENU LEVELS\Navmesh_light level\deep_water\water_sound.cs" />
@@ -696,7 +707,6 @@
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Rocks.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Assets unity\AmplifyOcclusion\Shaders\BlurFunctions.cginc" />
-    <None Include="Assets\AddressableAssetsData\link.xml" />
     <None Include="Assets\edgegap-unity-plugin\Runtime\BootstrapTemplates\EdgegapServerBootstrapMirrorTemp.cs.txt" />
     <None Include="Assets\scene levels\Multi scene\Speedrun level\shader\EdgeOutline.shader" />
     <None Include="Assets\com.rlabrecque.steamworks.net\Plugins\steam_api64.dll" />
@@ -711,6 +721,7 @@
     <None Include="Assets\scene levels\Multi scene\script\networkmanager\LICENSE.txt" />
     <None Include="Assets\Custom Shader\Shader\test 02.shader" />
     <None Include="Assets\Metater\MetaVoiceChat\NetEQ\meta_voice_chat_neteq.dll" />
+    <None Include="Assets\Assets unity\Portals\Scripts\Core\Shaders\Portal.shader" />
     <None Include="Assets\Custom Shader\Shader\CubeMap Better+.shader" />
     <None Include="Assets\Assets unity\AmplifyOcclusion\Readme.txt" />
     <None Include="Assets\Custom Shader\Shader\Skybox material.shader" />
@@ -754,18 +765,22 @@
     <None Include="Assets\Custom Shader\Wave disto\VortexDistortion.shader" />
     <None Include="Assets\Assets unity\Ultimate 10 Plus Shaders\Shaders\Snow.shader" />
     <None Include="Assets\Simple Car Controller\SCC by BoneCracker Games License.txt" />
+    <None Include="Assets\Assets unity\Portals\Scripts\Core\Shaders\Slice.shader" />
     <None Include="Assets\Metater\MetaVoiceChat\Examples\MuteAndDeafen.cs.txt" />
     <None Include="Assets\Assets unity\AmplifyOcclusion\Shaders\Occlusion.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Assets unity\Ultimate 10 Plus Shaders\Shaders\Lava3D.shader" />
     <None Include="Assets\edgegap-unity-plugin\Runtime\BootstrapTemplates\EdgegapServerBootstrapFishnetTemp.cs.txt" />
     <None Include="Assets\Assets unity\Ultimate 10 Plus Shaders\Shaders\Force Field.shader" />
+    <None Include="Assets\Assets unity\Portals\Models\Car\License.txt" />
+    <None Include="Assets\Assets unity\Portals\Scripts\Demo\Shaders\CloudTest.shader" />
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\License.txt" />
     <None Include="Assets\Assets unity\BushGrassBend\Demo\Example2\README.txt" />
     <None Include="Assets\AssetsSAVEDATA.txt" />
     <None Include="Assets\Metater\MetaVoiceChat\Examples\MaxFpsSetting.cs.txt" />
     <None Include="Assets\Assets unity\Poplar Tree FREE\Shaders\ALP Surface Detail Wind.shader" />
     <None Include="Assets\ScriptTemplates\55-Mirror__Network Room Player-NewNetworkRoomPlayer.cs.txt" />
+    <None Include="Assets\Assets unity\Portals\Scripts\Demo\Shaders\SkyDome.shader" />
     <None Include="Assets\StreamingAssets\SAVEDATA.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\ScriptTemplates\54-Mirror__Custom Interest Management-CustomInterestManagement.cs.txt" />

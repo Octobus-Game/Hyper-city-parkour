@@ -53,14 +53,29 @@ public class CharacterMovement0 : MonoBehaviour
     [SerializeField] private float _infiniteJumpInterval = 0.3f;  // Интервал между авто-прыжками (сек)
     [SerializeField] private float _infiniteJumpPower = 0f;       // 0 = использует _jumpPower
 
-    // Wall Jump параметры
+    // Wall Run + Wall Jump (логика портирована из WallRunningAdvanced)
+    [Header("Wall Run Settings")]
+    [SerializeField] private float _wallRunSpeed = 10f;               // базовая скорость бега по стене
+    [SerializeField] private float _wallStickSpeed = 3f;              // прижим к стене
+    [SerializeField] private float _wallClimbSpeed = 4f;              // скорость вверх/вниз по стене
+    [SerializeField] private float _maxWallRunTime = 1.5f;            // сколько можно бежать по стене
+    [SerializeField] private float _minWallRunHeight = 1.5f;          // минимальная высота над землёй
+    [SerializeField] private LayerMask _wallRunGroundMask = ~0;       // что считается «землёй»
+    [SerializeField] private bool _wallRunUseGravity = false;
+    [SerializeField] private float _wallRunGravityCounterForce = 8f;  // ослабление гравитации (если useGravity)
+    [SerializeField] private KeyCode _wallRunUpKey = KeyCode.LeftShift;
+    [SerializeField] private KeyCode _wallRunDownKey = KeyCode.LeftControl;
+    [SerializeField] private float _wallRunFov = 90f;
+    [SerializeField] private float _wallRunFovSpeed = 8f;
+
     [Header("Wall Jump Settings")]
-    [SerializeField] private float _wallJumpPower = 12f;
-    [SerializeField] private float _wallJumpHorizontalForce = 8f;
-    [SerializeField] private float _wallSlidingSpeed = 2f;
+    [SerializeField] private float _wallJumpPower = 12f;              // импульс вверх
+    [SerializeField] private float _wallJumpHorizontalForce = 8f;     // импульс от стены
+    [SerializeField] private float _exitWallTime = 0.2f;              // время, пока нельзя снова зацепиться за стену
+    [SerializeField] private float _wallMomentumDecay = 4f;           // затухание импульса в воздухе
+    [SerializeField] private float _wallMomentumDecayGround = 15f;    // затухание импульса на земле
     [SerializeField] private float _wallCheckDistance = 0.6f;
     [SerializeField] private LayerMask _wallLayerMask = 1;
-    [SerializeField] private float _wallJumpCooldown = 0.2f;
     [SerializeField] private ParticleSystem _wallJumpEffect;
 
     // Double Jump параметры
@@ -183,11 +198,21 @@ public class CharacterMovement0 : MonoBehaviour
     // Бесконечный прыжок переменные
     private float _infiniteJumpTimer = 0f;
 
-    // Wall Jump переменные
-    private bool _isTouchingWall = false;
-    private bool _isWallSliding = false;
-    private Vector3 _wallNormal;
-    private float _lastWallJumpTime = 0f;
+    // Wall Run / Wall Jump переменные
+    private bool _isWallRunning = false;
+    private bool _exitingWall = false;
+    private float _exitWallTimer = 0f;
+    private float _wallRunTimer = 0f;
+    private float _currentWallRunSpeed = 0f;
+    private Vector3 _wallRunDirection = Vector3.zero;
+    private Vector3 _wallMomentum = Vector3.zero;   // импульс после прыжка/схода со стены
+    private bool _wallLeft, _wallRight;
+    private RaycastHit _leftWallHit, _rightWallHit;
+    private bool _upwardsRunning, _downwardsRunning;
+    private float _horizontalInput;
+    private Camera _mainCamera;
+    private float _defaultFov;
+    private bool _fovOverrideActive = false;
 
     // Double Jump переменные
     private bool _hasDoubleJumped = false;
@@ -244,6 +269,9 @@ public class CharacterMovement0 : MonoBehaviour
         _currentHeight = _originalHeight;
 
         _cameraTransform = Camera.main?.transform;
+        _mainCamera = Camera.main;
+        if (_mainCamera != null)
+            _defaultFov = _mainCamera.fieldOfView;
         if (_cameraTransform != null)
             _originalCameraPosition = _cameraTransform.localPosition;
 
@@ -328,7 +356,7 @@ public class CharacterMovement0 : MonoBehaviour
 
 
 
-        CheckWallCollision();
+        HandleWallRun(keyForward, keyLeft, keyRight, keyJump);
 
         // ── Бесконечный прыжок ──────────────────────────────────────
         if (_infiniteJumpEnabled && Input.GetKey(KeyCode.Space))
@@ -357,9 +385,9 @@ public class CharacterMovement0 : MonoBehaviour
             }
             else if (!IsPlayerGrounded && Input.GetKeyDown(KeyCode.Space))
             {
-                if (_isTouchingWall && Time.time - _lastWallJumpTime > _wallJumpCooldown)
-                    WallJump();
-                else if (_doubleJumpEnabled && _canDoubleJump && !_hasDoubleJumped)
+                // Wall jump обрабатывается в HandleWallRun (как в WallRunningAdvanced).
+                // Во время бега по стене и сразу после wall jump двойной прыжок не срабатывает.
+                if (!_isWallRunning && !_exitingWall && _doubleJumpEnabled && _canDoubleJump && !_hasDoubleJumped)
                     DoubleJump();
             }
         }
@@ -404,6 +432,7 @@ public class CharacterMovement0 : MonoBehaviour
 
         UpdateAnimations();
         RotateWheels();
+        UpdateWallRunCamera();
 
         if (speedText != null)
         {
@@ -587,8 +616,16 @@ public class CharacterMovement0 : MonoBehaviour
         if (_planetGravityEnabled)
             UpdatePlanetGravity();
 
-        Walk(_walkDirection);
-        UpdateStrafeMomentum();
+        if (_isWallRunning)
+        {
+            WallRunningMovement();
+        }
+        else
+        {
+            Walk(_walkDirection);
+            UpdateStrafeMomentum();
+            ApplyWallMomentum();
+        }
 
         if (_planetGravityEnabled)
             DoGravityPlanet();
@@ -724,7 +761,7 @@ public class CharacterMovement0 : MonoBehaviour
         bool isWalking = isGrounded && isMoving && !_isDashing && !_isCrouching;
         bool isRunning = isGrounded && isMoving && _isDashing && !_isCrouching;
         bool isJumping = !isGrounded && _velocity.y > 0;
-        bool isFalling = !isGrounded && _velocity.y < -0.1f && !_isWallSliding;
+        bool isFalling = !isGrounded && _velocity.y < -0.1f && !_isWallRunning;
         bool isStrafeLeft = Input.GetKey(KeyCode.A) && isGrounded;
         bool isStrafeRight = Input.GetKey(KeyCode.D) && isGrounded;
 
@@ -739,7 +776,7 @@ public class CharacterMovement0 : MonoBehaviour
         _animator.SetBool(IsJumping, isJumping);
         _animator.SetBool(IsGrounded, isGrounded);
         _animator.SetBool(IsDashing, _isDashing);
-        _animator.SetBool(IsWallSliding, _isWallSliding);
+        _animator.SetBool(IsWallSliding, _isWallRunning);
         _animator.SetBool(IsFalling, isFalling);
         _animator.SetBool(IsCrouching, _isCrouching);
         _animator.SetFloat(MovementSpeed, _currentMovementSpeed);
@@ -749,27 +786,6 @@ public class CharacterMovement0 : MonoBehaviour
 
 
         _wasGrounded = isGrounded;
-    }
-
-    private void CheckWallCollision()
-    {
-        Vector3[] directions = { transform.right, -transform.right, transform.forward, -transform.forward };
-        _isTouchingWall = false;
-
-        foreach (Vector3 direction in directions)
-        {
-            RaycastHit hit;
-            Vector3 rayOrigin = transform.position + Vector3.up * 0.5f;
-
-            if (Physics.Raycast(rayOrigin, direction, out hit, _wallCheckDistance, _wallLayerMask))
-            {
-                _isTouchingWall = true;
-                _wallNormal = hit.normal;
-                break;
-            }
-        }
-
-        _isWallSliding = _isTouchingWall && !IsPlayerGrounded && _velocity.y < 0;
     }
 
     private void Walk(Vector3 direction)
@@ -800,8 +816,8 @@ public class CharacterMovement0 : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
             gravityToApply *= _fallMultiplier;
 
-        if (_isWallSliding)
-            _velocity.y = Mathf.Max(_velocity.y, -_wallSlidingSpeed);
+        if (_isWallRunning)
+            _velocity.y = GetWallRunVerticalVelocity(_velocity.y);
         else
             _velocity.y -= gravityToApply * Time.fixedDeltaTime;
 
@@ -877,12 +893,175 @@ public class CharacterMovement0 : MonoBehaviour
         Debug.Log("Air Dash!");
     }
 
+    // ══════════════════════════════════════════════════════════════════
+    //  WALL RUN + WALL JUMP  (порт логики из WallRunningAdvanced)
+    // ══════════════════════════════════════════════════════════════════
+
+    // Модель «смотрит» вдоль -transform.right (см. Walk: клавиша Forward даёт x = -1 по transform.right),
+    // а «вправо» для игрока — это transform.forward. Если оси поменяются — правь только эти два свойства.
+    private Vector3 PlayerForward => -transform.right;
+    private Vector3 PlayerRight => transform.forward;
+    private Vector3 WallRayOrigin => transform.position + transform.up * 0.5f;
+
+    private void CheckForWall()
+    {
+        Vector3 origin = WallRayOrigin;
+        _wallRight = Physics.Raycast(origin, PlayerRight, out _rightWallHit, _wallCheckDistance, _wallLayerMask, QueryTriggerInteraction.Ignore);
+        _wallLeft = Physics.Raycast(origin, -PlayerRight, out _leftWallHit, _wallCheckDistance, _wallLayerMask, QueryTriggerInteraction.Ignore);
+    }
+
+    private bool AboveGround()
+    {
+        if (IsPlayerGrounded) return false;
+
+        Vector3 down = _planetGravityEnabled ? _planetGravityDir : Vector3.down;
+        Vector3 origin = transform.position - down * 0.1f;
+        return !Physics.Raycast(origin, down, _minWallRunHeight + 0.1f, _wallRunGroundMask, QueryTriggerInteraction.Ignore);
+    }
+
+    private void HandleWallRun(KeyCode keyForward, KeyCode keyLeft, KeyCode keyRight, KeyCode keyJump)
+    {
+        CheckForWall();
+
+        // Входные данные
+        _horizontalInput = (Input.GetKey(keyRight) ? 1f : 0f) - (Input.GetKey(keyLeft) ? 1f : 0f);
+        bool forwardHeld = Input.GetKey(keyForward);
+        _upwardsRunning = Input.GetKey(_wallRunUpKey);
+        _downwardsRunning = Input.GetKey(_wallRunDownKey);
+
+        // State 1 - Wallrunning
+        if ((_wallLeft || _wallRight) && forwardHeld && AboveGround() && !_exitingWall)
+        {
+            if (!_isWallRunning)
+                StartWallRun();
+
+            // wallrun timer
+            if (_wallRunTimer > 0f)
+                _wallRunTimer -= Time.deltaTime;
+
+            if (_wallRunTimer <= 0f && _isWallRunning)
+            {
+                _exitingWall = true;
+                _exitWallTimer = _exitWallTime;
+            }
+
+            // wall jump
+            if (Input.GetKeyDown(keyJump))
+                WallJump();
+        }
+        // State 2 - Exiting
+        else if (_exitingWall)
+        {
+            if (_isWallRunning)
+                StopWallRun();
+
+            if (_exitWallTimer > 0f)
+                _exitWallTimer -= Time.deltaTime;
+
+            if (_exitWallTimer <= 0f)
+                _exitingWall = false;
+        }
+        // State 3 - None
+        else
+        {
+            if (_isWallRunning)
+                StopWallRun();
+        }
+    }
+
+    private Vector3 GetWallNormal()
+    {
+        Vector3 n = _wallRight ? _rightWallHit.normal : _leftWallHit.normal;
+        return Vector3.ProjectOnPlane(n, transform.up).normalized;
+    }
+
+    private Vector3 GetWallForward(Vector3 wallNormal)
+    {
+        Vector3 wallForward = Vector3.Cross(wallNormal, transform.up);
+
+        // выбираем направление вдоль стены, совпадающее с направлением взгляда
+        if (Vector3.Dot(PlayerForward, wallForward) < 0f)
+            wallForward = -wallForward;
+
+        return wallForward;
+    }
+
+    /// <summary>Горизонтальный импульс игрока (у CharacterController нет velocity как у Rigidbody).</summary>
+    private Vector3 GetHorizontalMomentum()
+    {
+        float speed = _isDashing ? _speedwalk * _dashSpeedMultiplier : _speedwalk;
+        return _walkDirection * speed * _currentSpeedMultiplier + _strafeMomentumVelocity + _wallMomentum;
+    }
+
+    private void StartWallRun()
+    {
+        _isWallRunning = true;
+        _wallRunTimer = _maxWallRunTime;
+
+        Vector3 wallNormal = GetWallNormal();
+        _wallRunDirection = GetWallForward(wallNormal);
+
+        // сохраняем набранную скорость вдоль стены (у Rigidbody это происходит само)
+        float entrySpeed = Mathf.Max(0f, Vector3.Dot(GetHorizontalMomentum(), _wallRunDirection));
+        _currentWallRunSpeed = Mathf.Max(_wallRunSpeed, entrySpeed);
+
+        // как в оригинале: сбрасываем вертикальную скорость
+        _velocity.y = 0f;
+        _strafeMomentumVelocity = Vector3.zero;
+        _wallMomentum = Vector3.zero;
+    }
+
+    private void WallRunningMovement()
+    {
+        Vector3 wallNormal = GetWallNormal();
+        _wallRunDirection = GetWallForward(wallNormal);
+
+        // forward force
+        Vector3 move = _wallRunDirection * _currentWallRunSpeed;
+
+        // push to wall force (если игрок не отклоняется в сторону от стены)
+        if (!(_wallLeft && _horizontalInput > 0f) && !(_wallRight && _horizontalInput < 0f))
+            move -= wallNormal * _wallStickSpeed;
+
+        _characterController.Move(move * Time.fixedDeltaTime);
+        // вертикальная часть считается в DoGravity / DoGravityPlanet через GetWallRunVerticalVelocity
+    }
+
+    private float GetWallRunVerticalVelocity(float currentY)
+    {
+        // upwards / downwards run
+        if (_upwardsRunning) return _wallClimbSpeed;
+        if (_downwardsRunning) return -_wallClimbSpeed;
+
+        // weaken gravity
+        if (_wallRunUseGravity)
+            return currentY - Mathf.Max(0f, _gravity - _wallRunGravityCounterForce) * Time.fixedDeltaTime;
+
+        return 0f;
+    }
+
+    private void StopWallRun()
+    {
+        _isWallRunning = false;
+
+        // не теряем скорость при сходе со стены (аналог инерции Rigidbody)
+        _wallMomentum = _wallRunDirection * _currentWallRunSpeed;
+    }
+
     private void WallJump()
     {
-        _lastWallJumpTime = Time.time;
-        _velocity.y = _wallJumpPower;
+        Vector3 wallNormal = GetWallNormal();
 
-        _characterController.Move(_wallNormal * _wallJumpHorizontalForce * Time.fixedDeltaTime);
+        // enter exiting wall state
+        _exitingWall = true;
+        _exitWallTimer = _exitWallTime;
+
+        // выходим из бега: сохраняем движение вдоль стены и добавляем импульс от стены
+        StopWallRun();
+        _wallMomentum += wallNormal * _wallJumpHorizontalForce;
+
+        // reset y velocity and add up force
+        _velocity.y = _wallJumpPower;
 
         _hasDoubleJumped = false;
         _canDoubleJump = true;
@@ -903,6 +1082,39 @@ public class CharacterMovement0 : MonoBehaviour
 
         if (_animator != null)
             _animator.SetTrigger(WallJumpTrigger);
+    }
+
+    /// <summary>Применяет и гасит импульс, оставшийся после wall jump / схода со стены.</summary>
+    private void ApplyWallMomentum()
+    {
+        if (_wallMomentum.sqrMagnitude < 0.0001f)
+        {
+            _wallMomentum = Vector3.zero;
+            return;
+        }
+
+        _characterController.Move(_wallMomentum * Time.fixedDeltaTime);
+
+        float decay = IsPlayerGrounded ? _wallMomentumDecayGround : _wallMomentumDecay;
+        _wallMomentum = Vector3.MoveTowards(_wallMomentum, Vector3.zero, decay * Time.fixedDeltaTime);
+    }
+
+    /// <summary>Эффект FOV при беге по стене (аналог cam.DoFov).</summary>
+    private void UpdateWallRunCamera()
+    {
+        if (_mainCamera == null) return;
+
+        if (_isWallRunning) _fovOverrideActive = true;
+        if (!_fovOverrideActive) return;
+
+        float target = _isWallRunning ? _wallRunFov : _defaultFov;
+        _mainCamera.fieldOfView = Mathf.Lerp(_mainCamera.fieldOfView, target, Time.deltaTime * _wallRunFovSpeed);
+
+        if (!_isWallRunning && Mathf.Abs(_mainCamera.fieldOfView - _defaultFov) < 0.05f)
+        {
+            _mainCamera.fieldOfView = _defaultFov;
+            _fovOverrideActive = false;
+        }
     }
 
     private IEnumerator Dash()
@@ -1109,9 +1321,9 @@ public class CharacterMovement0 : MonoBehaviour
 
         float gravityStrength = _currentPlanet != null ? _currentPlanet.gravityStrength : _gravity;
 
-        if (_isWallSliding)
+        if (_isWallRunning)
         {
-            _velocity.y = Mathf.Max(_velocity.y, -_wallSlidingSpeed);
+            _velocity.y = GetWallRunVerticalVelocity(_velocity.y);
         }
         else if (!grounded)
         {
@@ -1153,12 +1365,11 @@ public class CharacterMovement0 : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            Gizmos.color = _isTouchingWall ? Color.red : Color.green;
-            Vector3[] directions = { transform.right, -transform.right, transform.forward, -transform.forward };
-            Vector3 rayOrigin = transform.position + Vector3.up * 0.5f;
-
-            foreach (Vector3 direction in directions)
-                Gizmos.DrawRay(rayOrigin, direction * _wallCheckDistance);
+            Vector3 rayOrigin = WallRayOrigin;
+            Gizmos.color = _wallRight ? Color.red : Color.green;
+            Gizmos.DrawRay(rayOrigin, PlayerRight * _wallCheckDistance);
+            Gizmos.color = _wallLeft ? Color.red : Color.green;
+            Gizmos.DrawRay(rayOrigin, -PlayerRight * _wallCheckDistance);
         }
     }
 }

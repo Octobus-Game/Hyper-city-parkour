@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Portal : MonoBehaviour
+public class _Portal : MonoBehaviour
 {
     [Header("Точка выхода")]
     public Transform exitPoint;

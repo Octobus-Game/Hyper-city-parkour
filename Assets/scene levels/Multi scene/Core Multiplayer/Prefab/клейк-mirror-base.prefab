@@ -3622,7 +3622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.04150939, g: 0.04150939, b: 0.04150939, a: 0.79607844}
+  m_Color: {r: 0.04150939, g: 0.04150939, b: 0.04150939, a: 0.8901961}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15466,7 +15466,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   wallCheckDistance: 2.91
   wallCheckHeight: 1.5
-  maxWallJumps: 10
+  maxWallJumps: 20
   resetWallJumpsOnGroundTouch: 1
   wallSlideSound: {fileID: 0}
   wallJumpSound: {fileID: 0}
