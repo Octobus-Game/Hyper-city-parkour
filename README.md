@@ -33,4 +33,4 @@ Key game details:
 But why? A huge amount of time went into this project—it became too complex and had so many issues that fixing them completely would require remaking the whole game (and I don't have that kind of time). So, yeah.
 
 # RIP HYPER CITY PARKOUR 2024–2026 
-You became the perfect example of how *not* to make games.
+You became the perfect example of how *not* to make games. 🖕 :( 🖕
