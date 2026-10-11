@@ -486,6 +486,7 @@
 "Assets/Assets unity/Ultimate 10 Plus Shaders/Scripts/U10PS_MouseRotation.cs"
 "Assets/Assets unity/Ultimate 10 Plus Shaders/Scripts/U10PS_SnowOverTime.cs"
 "Assets/Assets unity/Ultimate 10 Plus Shaders/Shaders/Plexus/Plexus.cs"
+"Assets/Cave 3 other story/TELEPORT.cs"
 "Assets/Cityyy.cs"
 "Assets/Custom Shader/code/4d script.cs"
 "Assets/Custom Shader/code/Shader replace.cs"
@@ -555,6 +556,7 @@
 "Assets/ououo/TraceUtil/Trace.cs"
 "Assets/ououo/TraceUtil/Tracer.cs"
 "Assets/ououo/Water.cs"
+"Assets/Planets/BASHI 10 LEVEL.cs"
 "Assets/scene levels/cutscene/10 LEVEL/PLAYMOPDE.cs"
 "Assets/scene levels/cutscene/code cut/03030.cs"
 "Assets/scene levels/cutscene/code cut/4 level cut.cs"
@@ -630,6 +632,7 @@
 "Assets/scene levels/Multi scene/script/Bind player.cs"
 "Assets/scene levels/Multi scene/script/BuletMover.cs"
 "Assets/scene levels/Multi scene/script/bullet.cs"
+"Assets/scene levels/Multi scene/script/BulletSpawnerMirror.cs"
 "Assets/scene levels/Multi scene/script/CAMARE MULTI STRELS.cs"
 "Assets/scene levels/Multi scene/script/Car sidenie.cs"
 "Assets/scene levels/Multi scene/script/ChatBehavior.cs"
@@ -637,6 +640,7 @@
 "Assets/scene levels/Multi scene/script/code private.cs"
 "Assets/scene levels/Multi scene/script/connect to host.cs"
 "Assets/scene levels/Multi scene/script/Controleer.cs"
+"Assets/scene levels/Multi scene/script/DamageMirror.cs"
 "Assets/scene levels/Multi scene/script/destroy object.cs"
 "Assets/scene levels/Multi scene/script/DragManager.cs"
 "Assets/scene levels/Multi scene/script/Fade out music.cs"
@@ -682,6 +686,7 @@
 "Assets/scene levels/Multi scene/script/Sandbox green arm.cs"
 "Assets/scene levels/Multi scene/script/ScpEntity.cs"
 "Assets/scene levels/Multi scene/script/ScpPlayerEyes.cs"
+"Assets/scene levels/Multi scene/script/SELVEL8_Bullet.cs"
 "Assets/scene levels/Multi scene/script/shapka.cs"
 "Assets/scene levels/Multi scene/script/Smena hand sandbox.cs"
 "Assets/scene levels/Multi scene/script/smena map.cs"
@@ -1046,8 +1051,6 @@
 "Assets/UnityTechnologies/EffectExamples/Shared/Scripts/ParticleExamples.cs"
 "Assets/UnityTechnologies/EffectExamples/Shared/Scripts/ParticleMenu.cs"
 "Assets/UnityTechnologies/EffectExamples/TutorialInfo/Scripts/Readme.cs"
-"Assets/БОЛОТ ПЕЩЕРА/TELEPORT.cs"
-"Assets/ПЛАНЕТИ 3 УРОВЕНЬ/BASHI 10 LEVEL.cs"
 -langversion:9.0
 
 /deterministic

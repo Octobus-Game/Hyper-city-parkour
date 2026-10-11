@@ -79,6 +79,7 @@
     <Compile Include="Assets\scripts Main\_RandomSkyboxMenu.cs" />
     <Compile Include="Assets\scripts Main\old script\PlayerController.cs" />
     <Compile Include="Assets\Assets unity\Ultimate 10 Plus Shaders\Scripts\U10PS_MouseRotation.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\script\BulletSpawnerMirror.cs" />
     <Compile Include="Assets\scripts Main\Camera collision.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\Car sidenie.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\code private.cs" />
@@ -165,6 +166,7 @@
     <Compile Include="Assets\scene levels\Multi scene\script\networkmanager\Steam_Lobby.cs" />
     <Compile Include="Assets\scripts Main\PlayerAnimator.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
+    <Compile Include="Assets\Planets\BASHI 10 LEVEL.cs" />
     <Compile Include="Assets\scene levels\Multi scene\script\connect to host.cs" />
     <Compile Include="Assets\scripts Main\HALLOWEEM.cs" />
     <Compile Include="Assets\Scripts STEAM\Steamworks.NET\SteamManager.cs" />
@@ -266,6 +268,7 @@
     <Compile Include="Assets\scripts Main\Prop_Player_ite,.cs" />
     <Compile Include="Assets\2D LEVEL\script\CheckPoint 2D.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Core Multiplayer\Base player script\Voting map system.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\script\DamageMirror.cs" />
     <Compile Include="Assets\Metater\MetaVoiceChat\NetProviders\PurrNet\PurrNetNetProvider.cs" />
     <Compile Include="Assets\scripts Main\Health_code\DamageObject.cs" />
     <Compile Include="Assets\scripts Main\CREATEOBJECT.cs" />
@@ -494,6 +497,7 @@
     <Compile Include="Assets\Metater\MetaVoiceChat\Output\Multicast\MulticastVcAudioOutput.cs" />
     <Compile Include="Assets\scripts Main\FINAL TRIGGER.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Surf map\Scripts\PauseMenu.cs" />
+    <Compile Include="Assets\Cave 3 other story\TELEPORT.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Surf map\Scripts\Tracer.cs" />
     <Compile Include="Assets\Metater\MetaVoiceChat\Output\OnAudioFilterReadVcOutput\OnAudioFilterReadVcConfig.cs" />
     <Compile Include="Assets\Metater\MetaVoiceChat\Utils\FrameStopwatch.cs" />
@@ -604,6 +608,7 @@
     <Compile Include="Assets\scene levels\Secret levels\ULTRAKILL Gnevys\code\Hand kill.cs" />
     <Compile Include="Assets\scripts Main\Button click_.cs" />
     <Compile Include="Assets\scripts Main\Resulotion_screen_game.cs" />
+    <Compile Include="Assets\scene levels\Multi scene\script\SELVEL8_Bullet.cs" />
     <Compile Include="Assets\scripts Main\ConstantMovement.cs" />
     <Compile Include="Assets\scripts Main\Levelsave.cs" />
     <Compile Include="Assets\scripts Main\Orb jump.cs" />
@@ -626,7 +631,6 @@
     <Compile Include="Assets\scene levels\Multi scene\script\test\LevelNetworkManager.cs" />
     <Compile Include="Assets\scripts Main\DA\MP4.cs" />
     <Compile Include="Assets\Metater\MetaVoiceChat\Output\VcJitter.cs" />
-    <Compile Include="Assets\БОЛОТ ПЕЩЕРА\TELEPORT.cs" />
     <Compile Include="Assets\scripts Main\SCRITAL1.cs" />
     <Compile Include="Assets\Metater\MetaVoiceChat\NetEQ\NetEqInterop.cs" />
     <Compile Include="Assets\scripts Main\scene save\Save settings system.cs" />
@@ -645,7 +649,6 @@
     <Compile Include="Assets\scripts Main\DA\particle.cs" />
     <Compile Include="Assets\scripts Main\Healt bar.cs" />
     <Compile Include="Assets\Metater\MetaVoiceChat\Opus\VcEncoder.cs" />
-    <Compile Include="Assets\ПЛАНЕТИ 3 УРОВЕНЬ\BASHI 10 LEVEL.cs" />
     <Compile Include="Assets\scene levels\Multi scene\Surf map\Scripts\SurfController.cs" />
     <Compile Include="Assets\scripts Main\script\Health.cs" />
     <Compile Include="Assets\scripts Main\FollStepPManager.cs" />
